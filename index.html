@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CEFR Placement Test | A1 – B1+</title>
+  <meta name="description" content="A comprehensive CEFR Level Placement Test covering A1 to B1+. Test your grammar, vocabulary, reading, and speaking skills."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-deep:    #0b0f1a;
+      --bg-card:    #111827;
+      --bg-card2:   #1a2236;
+      --border:     #1e2d45;
+      --accent-a1:  #34d399;
+      --accent-a2:  #60a5fa;
+      --accent-b1:  #a78bfa;
+      --accent-b1p: #f472b6;
+      --text-primary:   #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted:     #64748b;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* BG Blobs */
+    .bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.12; }
+    .blob-1 { width: 600px; height: 600px; background: var(--accent-a1); top: -200px; left: -200px; animation: drift 18s ease-in-out infinite alternate; }
+    .blob-2 { width: 500px; height: 500px; background: var(--accent-b1); bottom: -150px; right: -100px; animation: drift 22s ease-in-out infinite alternate-reverse; }
+    .blob-3 { width: 400px; height: 400px; background: var(--accent-b1p); top: 40%; left: 50%; transform: translate(-50%,-50%); animation: drift 25s ease-in-out infinite alternate; }
+    @keyframes drift { 0%{transform:translate(0,0);}100%{transform:translate(40px,40px);} }
+
+    .wrapper { position: relative; z-index: 1; }
+
+    /* COVER */
+    #cover { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 24px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 6px 18px; font-size: 13px; color: var(--text-secondary); margin-bottom: 28px; backdrop-filter: blur(8px); }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-a1); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.4;} }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(36px,6vw,72px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg,#f1f5f9 0%,#94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: clamp(15px,2vw,18px); color: var(--text-secondary); max-width: 560px; line-height: 1.8; margin-bottom: 48px; }
+    .level-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 48px; }
+    .pill { padding: 8px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1.5px solid; }
+    .pill-a1  { color: var(--accent-a1);  border-color: var(--accent-a1);  background: rgba(52,211,153,0.08); }
+    .pill-a2  { color: var(--accent-a2);  border-color: var(--accent-a2);  background: rgba(96,165,250,0.08); }
+    .pill-b1  { color: var(--accent-b1);  border-color: var(--accent-b1);  background: rgba(167,139,250,0.08); }
+    .pill-b1p { color: var(--accent-b1p); border-color: var(--accent-b1p); background: rgba(244,114,182,0.08); }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; max-width: 700px; margin-bottom: 48px; }
+    .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px 24px; text-align: center; }
+    .info-card .num { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .info-card .lbl { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .btn-start { background: linear-gradient(135deg,var(--accent-a1),var(--accent-a2)); color: #0b0f1a; font-weight: 700; font-size: 16px; border: none; border-radius: 999px; padding: 16px 48px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 24px rgba(52,211,153,0.3); }
+    .btn-start:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(52,211,153,0.45); }
+
+    /* TEST APP */
+    #test-app { display: none; }
+    .test-header { background: rgba(17,24,39,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .test-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; background: linear-gradient(135deg,var(--accent-a1),var(--accent-a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .progress-info { display: flex; align-items: center; gap: 16px; }
+    .progress-text { font-size: 13px; color: var(--text-muted); }
+    .progress-bar-wrap { width: 180px; height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,var(--accent-a1),var(--accent-a2)); transition: width 0.5s ease; }
+
+    /* LEVEL SECTIONS */
+    .level-section { max-width: 860px; margin: 0 auto; padding: 48px 24px; display: none; }
+    .level-section.active { display: block; }
+    .level-banner { border-radius: var(--radius-lg); padding: 32px 36px; margin-bottom: 36px; position: relative; overflow: hidden; }
+    .level-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,rgba(255,255,255,0.04),transparent); }
+    .level-banner-a1  { background: linear-gradient(135deg,rgba(52,211,153,0.15),rgba(52,211,153,0.04)); border: 1px solid rgba(52,211,153,0.25); }
+    .level-banner-a2  { background: linear-gradient(135deg,rgba(96,165,250,0.15),rgba(96,165,250,0.04)); border: 1px solid rgba(96,165,250,0.25); }
+    .level-banner-b1  { background: linear-gradient(135deg,rgba(167,139,250,0.15),rgba(167,139,250,0.04)); border: 1px solid rgba(167,139,250,0.25); }
+    .level-banner-b1p { background: linear-gradient(135deg,rgba(244,114,182,0.15),rgba(244,114,182,0.04)); border: 1px solid rgba(244,114,182,0.25); }
+    .level-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
+    .tag-a1  { background: rgba(52,211,153,0.15);  color: var(--accent-a1); }
+    .tag-a2  { background: rgba(96,165,250,0.15);  color: var(--accent-a2); }
+    .tag-b1  { background: rgba(167,139,250,0.15); color: var(--accent-b1); }
+    .tag-b1p { background: rgba(244,114,182,0.15); color: var(--accent-b1p); }
+    .level-title { font-family: 'Playfair Display', serif; font-size: clamp(24px,4vw,36px); font-weight: 800; margin-bottom: 8px; }
+    .level-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* SKILL BLOCK */
+    .skill-block { margin-bottom: 40px; }
+    .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .skill-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .icon-grammar  { background: rgba(52,211,153,0.12); }
+    .icon-vocab    { background: rgba(96,165,250,0.12); }
+    .icon-reading  { background: rgba(167,139,250,0.12); }
+    .icon-speaking { background: rgba(244,114,182,0.12); }
+    .skill-name { font-size: 16px; font-weight: 700; display: flex; flex-direction: column; }
+    .skill-name span { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
+
+    /* QUESTION CARD */
+    .q-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 16px; transition: border-color 0.2s; }
+    .q-card:hover { border-color: rgba(255,255,255,0.15); }
+    .q-number { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .q-stem { font-size: 15px; line-height: 1.7; color: var(--text-primary); margin-bottom: 16px; }
+    .q-stem strong { color: var(--accent-a2); }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option-label { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s; font-size: 14px; color: var(--text-secondary); }
+    .option-label:hover { border-color: rgba(255,255,255,0.2); color: var(--text-primary); background: rgba(255,255,255,0.03); }
+    .option-label input[type="radio"] { display: none; }
+    .option-box { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; position: relative; transition: all 0.2s; }
+    .option-label input:checked ~ .option-box { border-color: var(--accent-a2); background: var(--accent-a2); }
+    .option-label input:checked ~ .option-box::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 6px; height: 6px; border-radius: 50%; background: #0b0f1a; }
+    .option-label:has(input:checked) { border-color: rgba(96,165,250,0.4); color: var(--text-primary); background: rgba(96,165,250,0.06); }
+    .blank-input { width: 100%; padding: 12px 16px; font-size: 15px; font-family: inherit; background: var(--bg-card2); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); outline: none; transition: border-color 0.2s; }
+    .blank-input:focus { border-color: var(--accent-a2); }
+    .blank-input::placeholder { color: var(--text-muted); }
+
+    /* READING */
+    .reading-passage { background: var(--bg-card2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 20px; line-height: 1.9; font-size: 15px; color: var(--text-secondary); }
+    .reading-passage h4 { color: var(--text-primary); margin-bottom: 12px; font-size: 16px; }
+
+    /* SPEAKING */
+    .speaking-card { background: linear-gradient(135deg,rgba(244,114,182,0.08),rgba(167,139,250,0.05)); border: 1px solid rgba(244,114,182,0.2); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 16px; }
+    .speaking-prompt { font-size: 15px; color: var(--text-primary); line-height: 1.8; margin-bottom: 14px; }
+    .speaking-tip { font-size: 13px; color: var(--text-muted); padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid rgba(244,114,182,0.5); }
+    .speaking-tip strong { color: var(--accent-b1p); }
+    .speaking-notes { width: 100%; margin-top: 14px; padding: 12px 16px; background: var(--bg-deep); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); font-family: inherit; font-size: 14px; resize: vertical; min-height: 80px; outline: none; transition: border-color 0.2s; }
+    .speaking-notes:focus { border-color: var(--accent-b1p); }
+    .speaking-notes::placeholder { color: var(--text-muted); }
+
+    /* NAV */
+    .section-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .btn-nav { padding: 12px 28px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; transition: all 0.25s ease; }
+    .btn-prev { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+    .btn-prev:hover { border-color: rgba(255,255,255,0.25); color: var(--text-primary); }
+    .btn-next-a1  { background: linear-gradient(135deg,var(--accent-a1),#059669);  color: #fff; }
+    .btn-next-a2  { background: linear-gradient(135deg,var(--accent-a2),#2563eb);  color: #fff; }
+    .btn-next-b1  { background: linear-gradient(135deg,var(--accent-b1),#7c3aed);  color: #fff; }
+    .btn-next-b1p { background: linear-gradient(135deg,var(--accent-b1p),#be185d); color: #fff; }
+    .btn-nav:not(.btn-prev):hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+    /* RESULTS */
+    #results { display: none; max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+    .results-hero { text-align: center; margin-bottom: 48px; }
+    .results-icon { font-size: 64px; margin-bottom: 16px; }
+    .results-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,5vw,48px); font-weight: 800; margin-bottom: 12px; }
+    .results-sub { font-size: 16px; color: var(--text-secondary); }
+    .score-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 16px; margin-bottom: 40px; }
+    .score-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; text-align: center; }
+    .score-card .s-level { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .score-card .s-pct { font-size: 36px; font-weight: 800; margin-bottom: 4px; }
+    .score-card .s-label { font-size: 12px; color: var(--text-muted); }
+    .result-band { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; margin-bottom: 24px; text-align: center; }
+    .result-band h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 8px; }
+    .result-band p { color: var(--text-secondary); line-height: 1.8; max-width: 500px; margin: 0 auto; }
+    .btn-restart { display: block; margin: 0 auto; background: linear-gradient(135deg,var(--accent-a1),var(--accent-a2)); color: #0b0f1a; font-weight: 700; font-size: 15px; border: none; border-radius: 999px; padding: 14px 40px; cursor: pointer; transition: all 0.3s ease; }
+    .btn-restart:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(52,211,153,0.35); }
+
+    /* DOTS */
+    .step-dots { display: flex; gap: 8px; align-items: center; }
+    .step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s; }
+    .step-dot.done-a1  { background: var(--accent-a1); }
+    .step-dot.done-a2  { background: var(--accent-a2); }
+    .step-dot.done-b1  { background: var(--accent-b1); }
+    .step-dot.done-b1p { background: var(--accent-b1p); }
+
+    @media (max-width: 600px) {
+      .test-header { padding: 12px 16px; }
+      .progress-bar-wrap { width: 100px; }
+      .level-banner { padding: 24px; }
+      .q-card { padding: 18px 20px; }
+      .section-nav { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="wrapper">
+
+  <!-- COVER -->
+  <section id="cover" aria-label="Placement Test Welcome Screen">
+    <div class="badge"><span class="badge-dot"></span>CEFR Aligned · No Answer Key</div>
+    <h1 class="hero-title">English Level<br/>Placement Test</h1>
+    <p class="hero-sub">Find your exact CEFR level — from complete beginner to confident intermediate. The test covers four key skills across four levels.</p>
+    <div class="level-pills">
+      <span class="pill pill-a1">A1 · Beginner</span>
+      <span class="pill pill-a2">A2 · Elementary</span>
+      <span class="pill pill-b1">B1 · Intermediate</span>
+      <span class="pill pill-b1p">B1+ · Upper-Intermediate</span>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="num" style="color:var(--accent-a1)">4</div><div class="lbl">CEFR Levels</div></div>
+      <div class="info-card"><div class="num" style="color:var(--accent-a2)">4</div><div class="lbl">Skills Tested</div></div>
+      <div class="info-card"><div class="num" style="color:var(--accent-b1)">60+</div><div class="lbl">Questions</div></div>
+      <div class="info-card"><div class="num" style="color:var(--accent-b1p)">~45</div><div class="lbl">Minutes</div></div>
+    </div>
+    <button class="btn-start" id="startBtn" onclick="startTest()">Begin Placement Test →</button>
+  </section>
+
+  <!-- TEST APP -->
+  <div id="test-app" role="main">
+
+    <header class="test-header" aria-label="Test Progress">
+      <span class="test-logo">CEFR Placement</span>
+      <div class="progress-info">
+        <div class="step-dots">
+          <div class="step-dot" id="dot-a1"></div>
+          <div class="step-dot" id="dot-a2"></div>
+          <div class="step-dot" id="dot-b1"></div>
+          <div class="step-dot" id="dot-b1p"></div>
+        </div>
+        <span class="progress-text" id="progressText">Level 1 of 4</span>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progressBar" style="width:25%"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ════════════════════════ A1 ════════════════════════ -->
+    <section class="level-section active" id="section-a1" aria-label="A1 Level Test">
+      <div class="level-banner level-banner-a1">
+        <div class="level-tag tag-a1">Level A1</div>
+        <h2 class="level-title">Beginner</h2>
+        <p class="level-desc">At this level, you can understand and use familiar everyday expressions and very basic phrases. Answer all four skill areas below.</p>
+      </div>
+
+      <!-- A1 GRAMMAR -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-grammar">✏️</div>
+          <div class="skill-name">Grammar <span>Choose the correct option for each sentence.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 1</div>
+          <p class="q-stem">_____ your name?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1g1" value="a"/><div class="option-box"></div>What is</label>
+            <label class="option-label"><input type="radio" name="a1g1" value="b"/><div class="option-box"></div>How is</label>
+            <label class="option-label"><input type="radio" name="a1g1" value="c"/><div class="option-box"></div>Where is</label>
+            <label class="option-label"><input type="radio" name="a1g1" value="d"/><div class="option-box"></div>When is</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 2</div>
+          <p class="q-stem">She _____ a teacher.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1g2" value="a"/><div class="option-box"></div>have</label>
+            <label class="option-label"><input type="radio" name="a1g2" value="b"/><div class="option-box"></div>are</label>
+            <label class="option-label"><input type="radio" name="a1g2" value="c"/><div class="option-box"></div>is</label>
+            <label class="option-label"><input type="radio" name="a1g2" value="d"/><div class="option-box"></div>am</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 3</div>
+          <p class="q-stem">There _____ two cats in the garden.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1g3" value="a"/><div class="option-box"></div>is</label>
+            <label class="option-label"><input type="radio" name="a1g3" value="b"/><div class="option-box"></div>are</label>
+            <label class="option-label"><input type="radio" name="a1g3" value="c"/><div class="option-box"></div>has</label>
+            <label class="option-label"><input type="radio" name="a1g3" value="d"/><div class="option-box"></div>have</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 4</div>
+          <p class="q-stem">I _____ from Turkey.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1g4" value="a"/><div class="option-box"></div>comes</label>
+            <label class="option-label"><input type="radio" name="a1g4" value="b"/><div class="option-box"></div>am come</label>
+            <label class="option-label"><input type="radio" name="a1g4" value="c"/><div class="option-box"></div>come</label>
+            <label class="option-label"><input type="radio" name="a1g4" value="d"/><div class="option-box"></div>coming</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 5</div>
+          <p class="q-stem">_____ he have a car?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1g5" value="a"/><div class="option-box"></div>Is</label>
+            <label class="option-label"><input type="radio" name="a1g5" value="b"/><div class="option-box"></div>Does</label>
+            <label class="option-label"><input type="radio" name="a1g5" value="c"/><div class="option-box"></div>Do</label>
+            <label class="option-label"><input type="radio" name="a1g5" value="d"/><div class="option-box"></div>Has</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- A1 VOCABULARY -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-vocab">📚</div>
+          <div class="skill-name">Vocabulary <span>Choose the word that matches the meaning.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 6</div>
+          <p class="q-stem">The opposite of "hot" is _____.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1v1" value="a"/><div class="option-box"></div>warm</label>
+            <label class="option-label"><input type="radio" name="a1v1" value="b"/><div class="option-box"></div>cold</label>
+            <label class="option-label"><input type="radio" name="a1v1" value="c"/><div class="option-box"></div>big</label>
+            <label class="option-label"><input type="radio" name="a1v1" value="d"/><div class="option-box"></div>fast</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 7</div>
+          <p class="q-stem">Which word is a colour?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1v2" value="a"/><div class="option-box"></div>table</label>
+            <label class="option-label"><input type="radio" name="a1v2" value="b"/><div class="option-box"></div>run</label>
+            <label class="option-label"><input type="radio" name="a1v2" value="c"/><div class="option-box"></div>purple</label>
+            <label class="option-label"><input type="radio" name="a1v2" value="d"/><div class="option-box"></div>happy</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 8</div>
+          <p class="q-stem">You use this to write: a _____.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1v3" value="a"/><div class="option-box"></div>spoon</label>
+            <label class="option-label"><input type="radio" name="a1v3" value="b"/><div class="option-box"></div>pen</label>
+            <label class="option-label"><input type="radio" name="a1v3" value="c"/><div class="option-box"></div>shoe</label>
+            <label class="option-label"><input type="radio" name="a1v3" value="d"/><div class="option-box"></div>window</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 9</div>
+          <p class="q-stem">Monday, Tuesday, Wednesday… What comes next?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1v4" value="a"/><div class="option-box"></div>Friday</label>
+            <label class="option-label"><input type="radio" name="a1v4" value="b"/><div class="option-box"></div>Sunday</label>
+            <label class="option-label"><input type="radio" name="a1v4" value="c"/><div class="option-box"></div>Thursday</label>
+            <label class="option-label"><input type="radio" name="a1v4" value="d"/><div class="option-box"></div>Saturday</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- A1 READING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-reading">📖</div>
+          <div class="skill-name">Reading <span>Read the text and answer the questions.</span></div>
+        </div>
+        <div class="reading-passage">
+          <h4>My Family</h4>
+          My name is Mia. I am twelve years old. I have a mother, a father, and one brother. My brother's name is Tom. He is fifteen. We live in a small house near the park. My mother is a nurse. My father is a doctor. I like school. My favourite subject is art.
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 10</div>
+          <p class="q-stem">How old is Mia?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1r1" value="a"/><div class="option-box"></div>Ten</label>
+            <label class="option-label"><input type="radio" name="a1r1" value="b"/><div class="option-box"></div>Twelve</label>
+            <label class="option-label"><input type="radio" name="a1r1" value="c"/><div class="option-box"></div>Fifteen</label>
+            <label class="option-label"><input type="radio" name="a1r1" value="d"/><div class="option-box"></div>Eight</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 11</div>
+          <p class="q-stem">What is Mia's mother's job?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1r2" value="a"/><div class="option-box"></div>Teacher</label>
+            <label class="option-label"><input type="radio" name="a1r2" value="b"/><div class="option-box"></div>Doctor</label>
+            <label class="option-label"><input type="radio" name="a1r2" value="c"/><div class="option-box"></div>Nurse</label>
+            <label class="option-label"><input type="radio" name="a1r2" value="d"/><div class="option-box"></div>Artist</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 12</div>
+          <p class="q-stem">Where does the family live?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a1r3" value="a"/><div class="option-box"></div>Near the school</label>
+            <label class="option-label"><input type="radio" name="a1r3" value="b"/><div class="option-box"></div>Near the park</label>
+            <label class="option-label"><input type="radio" name="a1r3" value="c"/><div class="option-box"></div>Near the hospital</label>
+            <label class="option-label"><input type="radio" name="a1r3" value="d"/><div class="option-box"></div>Near the market</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- A1 SPEAKING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-speaking">🎙️</div>
+          <div class="skill-name">Speaking <span>Prepare your spoken answers. Use the note box to plan.</span></div>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 1 — Introduce yourself.</strong><br/>Say your name, age, where you are from, and one thing you like. Speak for about 30 seconds.</p>
+          <div class="speaking-tip"><strong>Language to use:</strong> "My name is… I am… years old. I am from… I like…"</div>
+          <textarea class="speaking-notes" id="a1sp1" placeholder="Write your key points here to practise before speaking…"></textarea>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 2 — Describe a typical school day.</strong><br/>What time do you wake up? What do you eat for breakfast? Where do you go?</p>
+          <div class="speaking-tip"><strong>Language to use:</strong> "I wake up at… I eat… I go to… at…"</div>
+          <textarea class="speaking-notes" id="a1sp2" placeholder="Write your key points here to practise before speaking…"></textarea>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <span></span>
+        <button class="btn-nav btn-next-a1" onclick="goToSection('a2')">Continue to A2 →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ A2 ════════════════════════ -->
+    <section class="level-section" id="section-a2" aria-label="A2 Level Test">
+      <div class="level-banner level-banner-a2">
+        <div class="level-tag tag-a2">Level A2</div>
+        <h2 class="level-title">Elementary</h2>
+        <p class="level-desc">At A2, you can understand sentences and frequently used expressions related to areas of immediate relevance.</p>
+      </div>
+
+      <!-- A2 GRAMMAR -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-grammar">✏️</div>
+          <div class="skill-name">Grammar <span>Choose the correct form to complete each sentence.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 13</div>
+          <p class="q-stem">What _____ you do last weekend?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2g1" value="a"/><div class="option-box"></div>did</label>
+            <label class="option-label"><input type="radio" name="a2g1" value="b"/><div class="option-box"></div>do</label>
+            <label class="option-label"><input type="radio" name="a2g1" value="c"/><div class="option-box"></div>done</label>
+            <label class="option-label"><input type="radio" name="a2g1" value="d"/><div class="option-box"></div>was</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 14</div>
+          <p class="q-stem">She _____ watching TV when I called her.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2g2" value="a"/><div class="option-box"></div>is</label>
+            <label class="option-label"><input type="radio" name="a2g2" value="b"/><div class="option-box"></div>was</label>
+            <label class="option-label"><input type="radio" name="a2g2" value="c"/><div class="option-box"></div>were</label>
+            <label class="option-label"><input type="radio" name="a2g2" value="d"/><div class="option-box"></div>has been</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 15</div>
+          <p class="q-stem">There aren't _____ eggs in the fridge.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2g3" value="a"/><div class="option-box"></div>some</label>
+            <label class="option-label"><input type="radio" name="a2g3" value="b"/><div class="option-box"></div>much</label>
+            <label class="option-label"><input type="radio" name="a2g3" value="c"/><div class="option-box"></div>any</label>
+            <label class="option-label"><input type="radio" name="a2g3" value="d"/><div class="option-box"></div>no</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 16</div>
+          <p class="q-stem">She is _____ than her sister.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2g4" value="a"/><div class="option-box"></div>more tall</label>
+            <label class="option-label"><input type="radio" name="a2g4" value="b"/><div class="option-box"></div>tallest</label>
+            <label class="option-label"><input type="radio" name="a2g4" value="c"/><div class="option-box"></div>taller</label>
+            <label class="option-label"><input type="radio" name="a2g4" value="d"/><div class="option-box"></div>most tall</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 17</div>
+          <p class="q-stem">We _____ go to the cinema tomorrow evening.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2g5" value="a"/><div class="option-box"></div>going to</label>
+            <label class="option-label"><input type="radio" name="a2g5" value="b"/><div class="option-box"></div>will going</label>
+            <label class="option-label"><input type="radio" name="a2g5" value="c"/><div class="option-box"></div>are going to</label>
+            <label class="option-label"><input type="radio" name="a2g5" value="d"/><div class="option-box"></div>shall going</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 18</div>
+          <p class="q-stem">I _____ never eaten sushi before.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2g6" value="a"/><div class="option-box"></div>did</label>
+            <label class="option-label"><input type="radio" name="a2g6" value="b"/><div class="option-box"></div>have</label>
+            <label class="option-label"><input type="radio" name="a2g6" value="c"/><div class="option-box"></div>had</label>
+            <label class="option-label"><input type="radio" name="a2g6" value="d"/><div class="option-box"></div>was</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- A2 VOCABULARY -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-vocab">📚</div>
+          <div class="skill-name">Vocabulary <span>Choose the best word or phrase to complete each sentence.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 19</div>
+          <p class="q-stem">You buy medicine at a _____.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2v1" value="a"/><div class="option-box"></div>library</label>
+            <label class="option-label"><input type="radio" name="a2v1" value="b"/><div class="option-box"></div>pharmacy</label>
+            <label class="option-label"><input type="radio" name="a2v1" value="c"/><div class="option-box"></div>supermarket</label>
+            <label class="option-label"><input type="radio" name="a2v1" value="d"/><div class="option-box"></div>bank</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 20</div>
+          <p class="q-stem">"She was very _____ after working all day."</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2v2" value="a"/><div class="option-box"></div>bored</label>
+            <label class="option-label"><input type="radio" name="a2v2" value="b"/><div class="option-box"></div>tired</label>
+            <label class="option-label"><input type="radio" name="a2v2" value="c"/><div class="option-box"></div>hungry</label>
+            <label class="option-label"><input type="radio" name="a2v2" value="d"/><div class="option-box"></div>thirsty</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 21</div>
+          <p class="q-stem">Complete the phrase: "turn _____ the light."</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2v3" value="a"/><div class="option-box"></div>of</label>
+            <label class="option-label"><input type="radio" name="a2v3" value="b"/><div class="option-box"></div>off</label>
+            <label class="option-label"><input type="radio" name="a2v3" value="c"/><div class="option-box"></div>out</label>
+            <label class="option-label"><input type="radio" name="a2v3" value="d"/><div class="option-box"></div>away</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 22</div>
+          <p class="q-stem">Which word describes how someone feels when they receive good news?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2v4" value="a"/><div class="option-box"></div>lonely</label>
+            <label class="option-label"><input type="radio" name="a2v4" value="b"/><div class="option-box"></div>nervous</label>
+            <label class="option-label"><input type="radio" name="a2v4" value="c"/><div class="option-box"></div>excited</label>
+            <label class="option-label"><input type="radio" name="a2v4" value="d"/><div class="option-box"></div>confused</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- A2 READING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-reading">📖</div>
+          <div class="skill-name">Reading <span>Read the text carefully, then answer the questions.</span></div>
+        </div>
+        <div class="reading-passage">
+          <h4>Anna's Weekend</h4>
+          Last Saturday, Anna decided to visit her grandparents in the countryside. She took the early morning bus because she didn't have a car. The journey took two hours. When she arrived, her grandmother made a delicious lunch with vegetables from the garden. In the afternoon, Anna helped her grandfather fix his old bicycle. In the evening, the whole family sat outside and watched the stars. Anna was very happy and said she wanted to visit again next month.
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 23</div>
+          <p class="q-stem">How did Anna travel to her grandparents' house?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2r1" value="a"/><div class="option-box"></div>By car</label>
+            <label class="option-label"><input type="radio" name="a2r1" value="b"/><div class="option-box"></div>By train</label>
+            <label class="option-label"><input type="radio" name="a2r1" value="c"/><div class="option-box"></div>By bus</label>
+            <label class="option-label"><input type="radio" name="a2r1" value="d"/><div class="option-box"></div>By bicycle</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 24</div>
+          <p class="q-stem">What did Anna do in the afternoon?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2r2" value="a"/><div class="option-box"></div>She cooked lunch.</label>
+            <label class="option-label"><input type="radio" name="a2r2" value="b"/><div class="option-box"></div>She repaired the bicycle.</label>
+            <label class="option-label"><input type="radio" name="a2r2" value="c"/><div class="option-box"></div>She watched the stars.</label>
+            <label class="option-label"><input type="radio" name="a2r2" value="d"/><div class="option-box"></div>She took photographs.</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 25</div>
+          <p class="q-stem">Why did Anna take the bus? Because she _____.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="a2r3" value="a"/><div class="option-box"></div>likes buses</label>
+            <label class="option-label"><input type="radio" name="a2r3" value="b"/><div class="option-box"></div>doesn't have a car</label>
+            <label class="option-label"><input type="radio" name="a2r3" value="c"/><div class="option-box"></div>the bus is faster</label>
+            <label class="option-label"><input type="radio" name="a2r3" value="d"/><div class="option-box"></div>the train was full</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- A2 SPEAKING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-speaking">🎙️</div>
+          <div class="skill-name">Speaking <span>Read each task and prepare your spoken response.</span></div>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 1 — Talk about your home.</strong><br/>Describe your home. How many rooms are there? What is your favourite room and why? Speak for 45 seconds.</p>
+          <div class="speaking-tip"><strong>Useful language:</strong> "My home has… There is / are… My favourite room is… because…"</div>
+          <textarea class="speaking-notes" id="a2sp1" placeholder="Note down ideas before you speak…"></textarea>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 2 — Talk about past activities.</strong><br/>What did you do last weekend? Talk about at least three activities. Were they enjoyable? Why or why not?</p>
+          <div class="speaking-tip"><strong>Useful language:</strong> "Last weekend I… I also… It was (fun/boring/interesting) because…"</div>
+          <textarea class="speaking-notes" id="a2sp2" placeholder="Note down ideas before you speak…"></textarea>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <button class="btn-nav btn-prev" onclick="goToSection('a1')">← Back to A1</button>
+        <button class="btn-nav btn-next-a2" onclick="goToSection('b1')">Continue to B1 →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ B1 ════════════════════════ -->
+    <section class="level-section" id="section-b1" aria-label="B1 Level Test">
+      <div class="level-banner level-banner-b1">
+        <div class="level-tag tag-b1">Level B1</div>
+        <h2 class="level-title">Intermediate</h2>
+        <p class="level-desc">At B1, you can understand the main points of clear standard input on familiar matters and produce connected text on familiar topics.</p>
+      </div>
+
+      <!-- B1 GRAMMAR -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-grammar">✏️</div>
+          <div class="skill-name">Grammar <span>Choose the grammatically correct option.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 26</div>
+          <p class="q-stem">If I _____ more time, I would travel more.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1g1" value="a"/><div class="option-box"></div>have</label>
+            <label class="option-label"><input type="radio" name="b1g1" value="b"/><div class="option-box"></div>had</label>
+            <label class="option-label"><input type="radio" name="b1g1" value="c"/><div class="option-box"></div>will have</label>
+            <label class="option-label"><input type="radio" name="b1g1" value="d"/><div class="option-box"></div>had had</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 27</div>
+          <p class="q-stem">The report _____ by the manager last Friday.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1g2" value="a"/><div class="option-box"></div>wrote</label>
+            <label class="option-label"><input type="radio" name="b1g2" value="b"/><div class="option-box"></div>was written</label>
+            <label class="option-label"><input type="radio" name="b1g2" value="c"/><div class="option-box"></div>has written</label>
+            <label class="option-label"><input type="radio" name="b1g2" value="d"/><div class="option-box"></div>is written</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 28</div>
+          <p class="q-stem">She suggested _____ to the new restaurant downtown.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1g3" value="a"/><div class="option-box"></div>to go</label>
+            <label class="option-label"><input type="radio" name="b1g3" value="b"/><div class="option-box"></div>going</label>
+            <label class="option-label"><input type="radio" name="b1g3" value="c"/><div class="option-box"></div>go</label>
+            <label class="option-label"><input type="radio" name="b1g3" value="d"/><div class="option-box"></div>for going</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 29</div>
+          <p class="q-stem">By the time we arrived, the film _____.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1g4" value="a"/><div class="option-box"></div>already started</label>
+            <label class="option-label"><input type="radio" name="b1g4" value="b"/><div class="option-box"></div>had already started</label>
+            <label class="option-label"><input type="radio" name="b1g4" value="c"/><div class="option-box"></div>has already started</label>
+            <label class="option-label"><input type="radio" name="b1g4" value="d"/><div class="option-box"></div>was already starting</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 30</div>
+          <p class="q-stem">You _____ smoke in this building. It is strictly forbidden.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1g5" value="a"/><div class="option-box"></div>don't have to</label>
+            <label class="option-label"><input type="radio" name="b1g5" value="b"/><div class="option-box"></div>mustn't</label>
+            <label class="option-label"><input type="radio" name="b1g5" value="c"/><div class="option-box"></div>shouldn't</label>
+            <label class="option-label"><input type="radio" name="b1g5" value="d"/><div class="option-box"></div>needn't</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 31</div>
+          <p class="q-stem">He asked me _____ I had finished the project.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1g6" value="a"/><div class="option-box"></div>if</label>
+            <label class="option-label"><input type="radio" name="b1g6" value="b"/><div class="option-box"></div>that</label>
+            <label class="option-label"><input type="radio" name="b1g6" value="c"/><div class="option-box"></div>what</label>
+            <label class="option-label"><input type="radio" name="b1g6" value="d"/><div class="option-box"></div>which</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- B1 VOCABULARY -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-vocab">📚</div>
+          <div class="skill-name">Vocabulary <span>Choose the word that best fits each context.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 32</div>
+          <p class="q-stem">The new law will _____ people from smoking in public areas.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1v1" value="a"/><div class="option-box"></div>stop</label>
+            <label class="option-label"><input type="radio" name="b1v1" value="b"/><div class="option-box"></div>prevent</label>
+            <label class="option-label"><input type="radio" name="b1v1" value="c"/><div class="option-box"></div>avoid</label>
+            <label class="option-label"><input type="radio" name="b1v1" value="d"/><div class="option-box"></div>refuse</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 33</div>
+          <p class="q-stem">Despite the heavy rain, the match _____ as planned.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1v2" value="a"/><div class="option-box"></div>went ahead</label>
+            <label class="option-label"><input type="radio" name="b1v2" value="b"/><div class="option-box"></div>went on</label>
+            <label class="option-label"><input type="radio" name="b1v2" value="c"/><div class="option-box"></div>went by</label>
+            <label class="option-label"><input type="radio" name="b1v2" value="d"/><div class="option-box"></div>went off</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 34</div>
+          <p class="q-stem">The politician gave a long _____ about the economy.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1v3" value="a"/><div class="option-box"></div>chat</label>
+            <label class="option-label"><input type="radio" name="b1v3" value="b"/><div class="option-box"></div>speech</label>
+            <label class="option-label"><input type="radio" name="b1v3" value="c"/><div class="option-box"></div>gossip</label>
+            <label class="option-label"><input type="radio" name="b1v3" value="d"/><div class="option-box"></div>whisper</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 35</div>
+          <p class="q-stem">I am absolutely _____ of spiders — even small ones scare me.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1v4" value="a"/><div class="option-box"></div>terrified</label>
+            <label class="option-label"><input type="radio" name="b1v4" value="b"/><div class="option-box"></div>afraid</label>
+            <label class="option-label"><input type="radio" name="b1v4" value="c"/><div class="option-box"></div>scared</label>
+            <label class="option-label"><input type="radio" name="b1v4" value="d"/><div class="option-box"></div>frightened</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- B1 READING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-reading">📖</div>
+          <div class="skill-name">Reading <span>Read the article and answer the comprehension questions.</span></div>
+        </div>
+        <div class="reading-passage">
+          <h4>The Rise of Urban Farming</h4>
+          In recent years, urban farming has become an increasingly popular trend in cities around the world. With growing concerns about food security and environmental sustainability, more and more city dwellers are turning small rooftops, balconies, and even old warehouses into productive vegetable gardens.<br/><br/>
+          Supporters argue that urban farms can reduce the distance food travels from farm to table, significantly lowering carbon emissions. Furthermore, growing your own food can be a meaningful way to reconnect with nature and build a stronger sense of community.<br/><br/>
+          However, critics point out that urban farming faces serious challenges. Space and sunlight are limited in many cities, and the initial cost of setting up a garden can be quite high. Some experts also question whether small-scale urban farming can ever produce enough food to make a meaningful impact on a city's overall food supply. Despite these concerns, the movement continues to grow, driven by passionate volunteers and forward-thinking local governments.
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 36</div>
+          <p class="q-stem">According to the article, what is one environmental benefit of urban farming?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1r1" value="a"/><div class="option-box"></div>It creates more jobs in cities.</label>
+            <label class="option-label"><input type="radio" name="b1r1" value="b"/><div class="option-box"></div>It reduces the carbon footprint of food transport.</label>
+            <label class="option-label"><input type="radio" name="b1r1" value="c"/><div class="option-box"></div>It makes cities look more attractive.</label>
+            <label class="option-label"><input type="radio" name="b1r1" value="d"/><div class="option-box"></div>It eliminates the need for traditional farms.</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 37</div>
+          <p class="q-stem">What challenge does the article mention regarding urban farming?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1r2" value="a"/><div class="option-box"></div>People in cities don't like eating vegetables.</label>
+            <label class="option-label"><input type="radio" name="b1r2" value="b"/><div class="option-box"></div>The setup costs can be high and space is limited.</label>
+            <label class="option-label"><input type="radio" name="b1r2" value="c"/><div class="option-box"></div>Governments are against urban farming.</label>
+            <label class="option-label"><input type="radio" name="b1r2" value="d"/><div class="option-box"></div>It requires expensive high-tech equipment.</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 38</div>
+          <p class="q-stem">The word <strong>"passionate"</strong> in the last sentence is closest in meaning to:</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1r3" value="a"/><div class="option-box"></div>professional</label>
+            <label class="option-label"><input type="radio" name="b1r3" value="b"/><div class="option-box"></div>enthusiastic</label>
+            <label class="option-label"><input type="radio" name="b1r3" value="c"/><div class="option-box"></div>experienced</label>
+            <label class="option-label"><input type="radio" name="b1r3" value="d"/><div class="option-box"></div>organised</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 39</div>
+          <p class="q-stem">The author's overall tone in this article can best be described as:</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1r4" value="a"/><div class="option-box"></div>strongly against urban farming</label>
+            <label class="option-label"><input type="radio" name="b1r4" value="b"/><div class="option-box"></div>balanced — showing both benefits and drawbacks</label>
+            <label class="option-label"><input type="radio" name="b1r4" value="c"/><div class="option-box"></div>completely in favour of urban farming</label>
+            <label class="option-label"><input type="radio" name="b1r4" value="d"/><div class="option-box"></div>uncertain and unclear</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- B1 SPEAKING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-speaking">🎙️</div>
+          <div class="skill-name">Speaking <span>Respond to each prompt with extended, connected speech.</span></div>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 1 — Give your opinion.</strong><br/>"Social media has more negative effects than positive ones." Do you agree or disagree? Give two reasons and one example to support your view. Speak for about 1 minute.</p>
+          <div class="speaking-tip"><strong>Structure tip:</strong> State opinion → Reason 1 (+ example) → Reason 2 → Conclude</div>
+          <textarea class="speaking-notes" id="b1sp1" placeholder="Outline your main points here…"></textarea>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 2 — Compare and contrast.</strong><br/>Compare living in a big city with living in the countryside. Discuss advantages and disadvantages of both. Which would you prefer and why?</p>
+          <div class="speaking-tip"><strong>Useful phrases:</strong> "On the other hand… whereas… both… have… In contrast to… I would prefer… because…"</div>
+          <textarea class="speaking-notes" id="b1sp2" placeholder="Outline your comparison here…"></textarea>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <button class="btn-nav btn-prev" onclick="goToSection('a2')">← Back to A2</button>
+        <button class="btn-nav btn-next-b1" onclick="goToSection('b1p')">Continue to B1+ →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ B1+ ════════════════════════ -->
+    <section class="level-section" id="section-b1p" aria-label="B1+ Level Test">
+      <div class="level-banner level-banner-b1p">
+        <div class="level-tag tag-b1p">Level B1+</div>
+        <h2 class="level-title">Upper-Intermediate</h2>
+        <p class="level-desc">At B1+, you can understand extended texts, express yourself fluently on a wide range of topics, and handle complex language structures with growing confidence.</p>
+      </div>
+
+      <!-- B1+ GRAMMAR -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-grammar">✏️</div>
+          <div class="skill-name">Grammar <span>Select the most accurate option in each complex sentence.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 40</div>
+          <p class="q-stem">If she _____ the warning signs, the accident would never have happened.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pg1" value="a"/><div class="option-box"></div>noticed</label>
+            <label class="option-label"><input type="radio" name="b1pg1" value="b"/><div class="option-box"></div>had noticed</label>
+            <label class="option-label"><input type="radio" name="b1pg1" value="c"/><div class="option-box"></div>would notice</label>
+            <label class="option-label"><input type="radio" name="b1pg1" value="d"/><div class="option-box"></div>has noticed</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 41</div>
+          <p class="q-stem">The scientists discovered that the virus _____ mutating faster than expected.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pg2" value="a"/><div class="option-box"></div>is</label>
+            <label class="option-label"><input type="radio" name="b1pg2" value="b"/><div class="option-box"></div>was</label>
+            <label class="option-label"><input type="radio" name="b1pg2" value="c"/><div class="option-box"></div>were</label>
+            <label class="option-label"><input type="radio" name="b1pg2" value="d"/><div class="option-box"></div>has been</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 42</div>
+          <p class="q-stem">Not only _____ the exam, but she also received the highest grade in the class.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pg3" value="a"/><div class="option-box"></div>she passed</label>
+            <label class="option-label"><input type="radio" name="b1pg3" value="b"/><div class="option-box"></div>did she pass</label>
+            <label class="option-label"><input type="radio" name="b1pg3" value="c"/><div class="option-box"></div>she did pass</label>
+            <label class="option-label"><input type="radio" name="b1pg3" value="d"/><div class="option-box"></div>passed she</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 43</div>
+          <p class="q-stem">The government's decision to cut funding for public transport has been widely _____.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pg4" value="a"/><div class="option-box"></div>critique</label>
+            <label class="option-label"><input type="radio" name="b1pg4" value="b"/><div class="option-box"></div>criticised</label>
+            <label class="option-label"><input type="radio" name="b1pg4" value="c"/><div class="option-box"></div>criticising</label>
+            <label class="option-label"><input type="radio" name="b1pg4" value="d"/><div class="option-box"></div>critical</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 44</div>
+          <p class="q-stem">I wish I _____ so much time on social media last year.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pg5" value="a"/><div class="option-box"></div>didn't spend</label>
+            <label class="option-label"><input type="radio" name="b1pg5" value="b"/><div class="option-box"></div>hadn't spent</label>
+            <label class="option-label"><input type="radio" name="b1pg5" value="c"/><div class="option-box"></div>wouldn't spend</label>
+            <label class="option-label"><input type="radio" name="b1pg5" value="d"/><div class="option-box"></div>won't spend</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 45 — Fill in the blank</div>
+          <p class="q-stem">Despite _____ (work) all night, she managed to finish the report before the deadline.</p>
+          <input type="text" class="blank-input" id="b1pg6" placeholder="Write the correct form of the verb 'work'…"/>
+        </div>
+      </div>
+
+      <!-- B1+ VOCABULARY -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-vocab">📚</div>
+          <div class="skill-name">Vocabulary <span>Choose the option that best completes each sentence.</span></div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 46</div>
+          <p class="q-stem">The CEO's decision to _____ the merger negotiations surprised the board of directors.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pv1" value="a"/><div class="option-box"></div>call off</label>
+            <label class="option-label"><input type="radio" name="b1pv1" value="b"/><div class="option-box"></div>call up</label>
+            <label class="option-label"><input type="radio" name="b1pv1" value="c"/><div class="option-box"></div>call out</label>
+            <label class="option-label"><input type="radio" name="b1pv1" value="d"/><div class="option-box"></div>call in</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 47</div>
+          <p class="q-stem">The documentary shed light on the _____ impact of fast fashion on developing countries.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pv2" value="a"/><div class="option-box"></div>devastating</label>
+            <label class="option-label"><input type="radio" name="b1pv2" value="b"/><div class="option-box"></div>bad</label>
+            <label class="option-label"><input type="radio" name="b1pv2" value="c"/><div class="option-box"></div>ugly</label>
+            <label class="option-label"><input type="radio" name="b1pv2" value="d"/><div class="option-box"></div>harmful</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 48</div>
+          <p class="q-stem">She found the seminar _____ — it gave her a completely new perspective on leadership.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pv3" value="a"/><div class="option-box"></div>eye-catching</label>
+            <label class="option-label"><input type="radio" name="b1pv3" value="b"/><div class="option-box"></div>eye-opening</label>
+            <label class="option-label"><input type="radio" name="b1pv3" value="c"/><div class="option-box"></div>eye-watering</label>
+            <label class="option-label"><input type="radio" name="b1pv3" value="d"/><div class="option-box"></div>eye-level</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 49</div>
+          <p class="q-stem">The new policy aims to _____ inequality by investing in education and healthcare.</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pv4" value="a"/><div class="option-box"></div>tackle</label>
+            <label class="option-label"><input type="radio" name="b1pv4" value="b"/><div class="option-box"></div>escape</label>
+            <label class="option-label"><input type="radio" name="b1pv4" value="c"/><div class="option-box"></div>ignore</label>
+            <label class="option-label"><input type="radio" name="b1pv4" value="d"/><div class="option-box"></div>hide</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 50 — Word Formation</div>
+          <p class="q-stem">The scientist's _____ (discover) of a new element changed the field of chemistry forever.</p>
+          <input type="text" class="blank-input" id="b1pv5" placeholder="Write the correct noun form…"/>
+        </div>
+      </div>
+
+      <!-- B1+ READING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-reading">📖</div>
+          <div class="skill-name">Reading <span>Read the extended text and answer the inferential questions.</span></div>
+        </div>
+        <div class="reading-passage">
+          <h4>The Psychology of Procrastination</h4>
+          Most people believe that procrastination is simply laziness — a lack of willpower or motivation. However, psychologists increasingly argue that this is a misconception. At its core, procrastination is an <em>emotional</em> regulation problem, not a time management one.<br/><br/>
+          When faced with a task that feels overwhelming, boring, or anxiety-inducing, the human brain naturally seeks relief from that discomfort. Checking social media, watching another episode, or making yet another cup of coffee all offer an immediate escape from the unpleasant feeling associated with the challenging task. In the short term, this strategy works brilliantly — the discomfort disappears. However, the long-term consequences are often significant: missed deadlines, increased stress, and a growing sense of guilt and self-criticism.<br/><br/>
+          Research by Dr. Timothy Pychyl and Dr. Fuschia Sirois suggests that self-compassion is one of the most effective tools for overcoming procrastination. Rather than punishing yourself harshly for delaying, treating yourself with the same kindness you would offer a struggling friend can break the cycle of negative emotions that fuel further avoidance. The irony, it turns out, is that being kinder to yourself may actually make you more productive.
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 51</div>
+          <p class="q-stem">According to the passage, why do psychologists say procrastination is misunderstood?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pr1" value="a"/><div class="option-box"></div>Because lazy people don't procrastinate.</label>
+            <label class="option-label"><input type="radio" name="b1pr1" value="b"/><div class="option-box"></div>Because it is about managing emotions, not time.</label>
+            <label class="option-label"><input type="radio" name="b1pr1" value="c"/><div class="option-box"></div>Because it only affects people with anxiety disorders.</label>
+            <label class="option-label"><input type="radio" name="b1pr1" value="d"/><div class="option-box"></div>Because watching TV improves productivity.</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 52</div>
+          <p class="q-stem">What does the phrase <strong>"this strategy works brilliantly"</strong> (paragraph 2) refer to?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pr2" value="a"/><div class="option-box"></div>Completing tasks under pressure</label>
+            <label class="option-label"><input type="radio" name="b1pr2" value="b"/><div class="option-box"></div>Avoiding a task to get short-term relief from discomfort</label>
+            <label class="option-label"><input type="radio" name="b1pr2" value="c"/><div class="option-box"></div>Drinking coffee to improve focus</label>
+            <label class="option-label"><input type="radio" name="b1pr2" value="d"/><div class="option-box"></div>Asking a friend for help</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 53</div>
+          <p class="q-stem">The author uses the word <strong>"irony"</strong> in the last paragraph to suggest that:</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pr3" value="a"/><div class="option-box"></div>being productive is impossible for procrastinators.</label>
+            <label class="option-label"><input type="radio" name="b1pr3" value="b"/><div class="option-box"></div>self-criticism is the most effective motivational tool.</label>
+            <label class="option-label"><input type="radio" name="b1pr3" value="c"/><div class="option-box"></div>the opposite of what people expect — gentleness — leads to better results.</label>
+            <label class="option-label"><input type="radio" name="b1pr3" value="d"/><div class="option-box"></div>psychologists are not always reliable.</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 54</div>
+          <p class="q-stem">Which statement best summarises the main message of the text?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pr4" value="a"/><div class="option-box"></div>Procrastination is caused by poor time management skills.</label>
+            <label class="option-label"><input type="radio" name="b1pr4" value="b"/><div class="option-box"></div>Technology is the primary cause of procrastination.</label>
+            <label class="option-label"><input type="radio" name="b1pr4" value="c"/><div class="option-box"></div>Understanding and addressing the emotions behind avoidance helps people overcome procrastination.</label>
+            <label class="option-label"><input type="radio" name="b1pr4" value="d"/><div class="option-box"></div>Only professional psychologists can help people stop procrastinating.</label>
+          </div>
+        </div>
+        <div class="q-card">
+          <div class="q-number">Question 55 — Inference</div>
+          <p class="q-stem">What can we infer about Dr. Pychyl and Dr. Sirois' approach to therapy?</p>
+          <div class="options">
+            <label class="option-label"><input type="radio" name="b1pr5" value="a"/><div class="option-box"></div>They believe rewards and punishments are the best tools.</label>
+            <label class="option-label"><input type="radio" name="b1pr5" value="b"/><div class="option-box"></div>They likely encourage a compassionate, non-judgmental attitude towards oneself.</label>
+            <label class="option-label"><input type="radio" name="b1pr5" value="c"/><div class="option-box"></div>They think procrastinators should work longer hours.</label>
+            <label class="option-label"><input type="radio" name="b1pr5" value="d"/><div class="option-box"></div>They argue procrastination cannot be treated.</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- B1+ SPEAKING -->
+      <div class="skill-block">
+        <div class="skill-header">
+          <div class="skill-icon icon-speaking">🎙️</div>
+          <div class="skill-name">Speaking <span>Respond fluently and at length. Aim for 1–2 minutes per task.</span></div>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 1 — Extended opinion.</strong><br/>"Artificial intelligence will create more problems than it solves for humanity over the next 20 years." Discuss this statement. Consider both supporting and opposing arguments before giving your own conclusion.</p>
+          <div class="speaking-tip"><strong>Advanced language to aim for:</strong> "It is often argued that… Proponents of this view contend… On the other hand… A further consideration is… To conclude, I would say…"</div>
+          <textarea class="speaking-notes" id="b1psp1" placeholder="Plan your argument — both sides, then your conclusion…"></textarea>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 2 — Problem and solution.</strong><br/>Many young people report high levels of stress and anxiety. What do you think are the main causes? What solutions would you propose, and who should be responsible for implementing them?</p>
+          <div class="speaking-tip"><strong>Structure:</strong> Cause 1 + example → Cause 2 → Solution A (who implements?) → Solution B → Personal reflection</div>
+          <textarea class="speaking-notes" id="b1psp2" placeholder="Map out causes → solutions → responsibilities…"></textarea>
+        </div>
+        <div class="speaking-card">
+          <p class="speaking-prompt"><strong>Task 3 — Hypothetical discussion.</strong><br/>If you could change one major thing about the education system in your country, what would it be and why? What challenges might arise, and how would you overcome them?</p>
+          <div class="speaking-tip"><strong>Language focus:</strong> Conditionals ("If… were to… it would/could…"), concession ("Although… it is worth noting that…"), hedging ("It might be argued that…")</div>
+          <textarea class="speaking-notes" id="b1psp3" placeholder="Your proposed change, reasoning, challenges, solutions…"></textarea>
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <button class="btn-nav btn-prev" onclick="goToSection('b1')">← Back to B1</button>
+        <button class="btn-nav btn-next-b1p" onclick="showResults()">Submit Test ✓</button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" aria-label="Test Completion">
+      <div class="results-hero">
+        <div class="results-icon">🎓</div>
+        <h1 class="results-title">Test Complete!</h1>
+        <p class="results-sub">You have completed all four levels of the CEFR Placement Test.<br/>Your teacher will review your responses and speaking notes to determine your level.</p>
+      </div>
+      <div class="score-cards">
+        <div class="score-card">
+          <div class="s-level" style="color:var(--accent-a1)">A1 · Beginner</div>
+          <div class="s-pct" style="color:var(--accent-a1)" id="scoreA1">—</div>
+          <div class="s-label">Questions Answered</div>
+        </div>
+        <div class="score-card">
+          <div class="s-level" style="color:var(--accent-a2)">A2 · Elementary</div>
+          <div class="s-pct" style="color:var(--accent-a2)" id="scoreA2">—</div>
+          <div class="s-label">Questions Answered</div>
+        </div>
+        <div class="score-card">
+          <div class="s-level" style="color:var(--accent-b1)">B1 · Intermediate</div>
+          <div class="s-pct" style="color:var(--accent-b1)" id="scoreB1">—</div>
+          <div class="s-label">Questions Answered</div>
+        </div>
+        <div class="score-card">
+          <div class="s-level" style="color:var(--accent-b1p)">B1+ · Upper-Int.</div>
+          <div class="s-pct" style="color:var(--accent-b1p)" id="scoreB1P">—</div>
+          <div class="s-label">Questions Answered</div>
+        </div>
+      </div>
+      <div class="result-band">
+        <h2>📋 Next Steps</h2>
+        <p>Hand this completed test to your teacher. Your responses to all four skill areas — grammar, vocabulary, reading, and speaking — will be evaluated together. Your teacher will discuss your level placement with you and recommend the most appropriate course or learning path.</p>
+      </div>
+      <button class="btn-restart" onclick="restartTest()">↺ Restart Test</button>
+    </section>
+
+  </div><!-- /test-app -->
+</div><!-- /wrapper -->
+
+<script>
+  const sections = ['a1','a2','b1','b1p'];
+  let currentSection = 'a1';
+
+  function startTest() {
+    document.getElementById('cover').style.display = 'none';
+    document.getElementById('test-app').style.display = 'block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function goToSection(target) {
+    document.getElementById('section-'+currentSection).classList.remove('active');
+    document.getElementById('section-'+target).classList.add('active');
+    currentSection = target;
+    const idx = sections.indexOf(target);
+    document.getElementById('progressText').textContent = 'Level '+(idx+1)+' of 4';
+    document.getElementById('progressBar').style.width = ((idx+1)/4*100)+'%';
+    const colours = {a1:'done-a1',a2:'done-a2',b1:'done-b1',b1p:'done-b1p'};
+    sections.forEach(function(s,i){
+      var dot = document.getElementById('dot-'+s);
+      dot.className = 'step-dot'+(i<=idx?' '+colours[s]:'');
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function countAnswered(names) {
+    var count = 0;
+    names.forEach(function(n){
+      var radios = document.querySelectorAll('input[name="'+n+'"]');
+      var answered = false;
+      radios.forEach(function(r){if(r.checked)answered=true;});
+      if(answered)count++;
+    });
+    return count;
+  }
+
+  function showResults() {
+    document.getElementById('section-b1p').classList.remove('active');
+    var a1q  = ['a1g1','a1g2','a1g3','a1g4','a1g5','a1v1','a1v2','a1v3','a1v4','a1r1','a1r2','a1r3'];
+    var a2q  = ['a2g1','a2g2','a2g3','a2g4','a2g5','a2g6','a2v1','a2v2','a2v3','a2v4','a2r1','a2r2','a2r3'];
+    var b1q  = ['b1g1','b1g2','b1g3','b1g4','b1g5','b1g6','b1v1','b1v2','b1v3','b1v4','b1r1','b1r2','b1r3','b1r4'];
+    var b1pq = ['b1pg1','b1pg2','b1pg3','b1pg4','b1pg5','b1pv1','b1pv2','b1pv3','b1pv4','b1pr1','b1pr2','b1pr3','b1pr4','b1pr5'];
+    document.getElementById('scoreA1').textContent  = countAnswered(a1q) +' / '+a1q.length;
+    document.getElementById('scoreA2').textContent  = countAnswered(a2q) +' / '+a2q.length;
+    document.getElementById('scoreB1').textContent  = countAnswered(b1q) +' / '+b1q.length;
+    document.getElementById('scoreB1P').textContent = countAnswered(b1pq)+' / '+b1pq.length;
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('progressBar').style.width = '100%';
+    document.getElementById('progressText').textContent = 'Completed!';
+    var colours = {a1:'done-a1',a2:'done-a2',b1:'done-b1',b1p:'done-b1p'};
+    sections.forEach(function(s){document.getElementById('dot-'+s).className='step-dot '+colours[s];});
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function restartTest() {
+    document.querySelectorAll('input[type="radio"]').forEach(function(r){r.checked=false;});
+    document.querySelectorAll('textarea,input[type="text"]').forEach(function(t){t.value='';});
+    document.getElementById('results').style.display = 'none';
+    sections.forEach(function(s){
+      document.getElementById('section-'+s).classList.remove('active');
+      document.getElementById('dot-'+s).className='step-dot';
+    });
+    document.getElementById('section-a1').classList.add('active');
+    currentSection = 'a1';
+    document.getElementById('progressBar').style.width = '25%';
+    document.getElementById('progressText').textContent = 'Level 1 of 4';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
