@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CEFR Placement Test | A1 – B1+</title>
-  <meta name="description" content="A comprehensive CEFR Level Placement Test covering A1 to B1+. Test your grammar, vocabulary, reading, and speaking skills."/>
+  <title>Comprehensive CEFR Placement Test (A1 – B1)</title>
+  <meta name="description" content="An in-depth CEFR Placement Test covering Grammar, Vocabulary, Reading, and Speaking for levels A1, A2, and B1."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg-deep:    #0b0f1a;
+      --bg-deep:    #0b0f19;
       --bg-card:    #111827;
-      --bg-card2:   #1a2236;
-      --border:     #1e2d45;
-      --accent-a1:  #34d399;
-      --accent-a2:  #60a5fa;
-      --accent-b1:  #a78bfa;
-      --accent-b1p: #f472b6;
-      --text-primary:   #f1f5f9;
-      --text-secondary: #94a3b8;
-      --text-muted:     #64748b;
+      --bg-card2:   #1f2937;
+      --border:     #374151;
+      --accent-a1:  #10b981;
+      --accent-a2:  #3b82f6;
+      --accent-b1:  #8b5cf6;
+      --text-primary:   #f9fafb;
+      --text-secondary: #d1d5db;
+      --text-muted:     #9ca3af;
       --radius-md:  12px;
-      --radius-lg:  20px;
+      --radius-lg:  16px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,1093 +34,1824 @@
       overflow-x: hidden;
     }
 
-    /* BG Blobs */
     .bg-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.12; }
-    .blob-1 { width: 600px; height: 600px; background: var(--accent-a1); top: -200px; left: -200px; animation: drift 18s ease-in-out infinite alternate; }
-    .blob-2 { width: 500px; height: 500px; background: var(--accent-b1); bottom: -150px; right: -100px; animation: drift 22s ease-in-out infinite alternate-reverse; }
-    .blob-3 { width: 400px; height: 400px; background: var(--accent-b1p); top: 40%; left: 50%; transform: translate(-50%,-50%); animation: drift 25s ease-in-out infinite alternate; }
-    @keyframes drift { 0%{transform:translate(0,0);}100%{transform:translate(40px,40px);} }
+    .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.1; }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent-a1); top: -100px; left: -100px; }
+    .blob-2 { width: 500px; height: 500px; background: var(--accent-b1); bottom: -100px; right: -100px; }
 
-    .wrapper { position: relative; z-index: 1; }
+    .wrapper { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 16px; }
 
-    /* COVER */
-    #cover { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 24px; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 6px 18px; font-size: 13px; color: var(--text-secondary); margin-bottom: 28px; backdrop-filter: blur(8px); }
-    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-a1); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.4;} }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(36px,6vw,72px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg,#f1f5f9 0%,#94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-sub { font-size: clamp(15px,2vw,18px); color: var(--text-secondary); max-width: 560px; line-height: 1.8; margin-bottom: 48px; }
-    .level-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 48px; }
-    .pill { padding: 8px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1.5px solid; }
-    .pill-a1  { color: var(--accent-a1);  border-color: var(--accent-a1);  background: rgba(52,211,153,0.08); }
-    .pill-a2  { color: var(--accent-a2);  border-color: var(--accent-a2);  background: rgba(96,165,250,0.08); }
-    .pill-b1  { color: var(--accent-b1);  border-color: var(--accent-b1);  background: rgba(167,139,250,0.08); }
-    .pill-b1p { color: var(--accent-b1p); border-color: var(--accent-b1p); background: rgba(244,114,182,0.08); }
-    .info-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; max-width: 700px; margin-bottom: 48px; }
-    .info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px 24px; text-align: center; }
-    .info-card .num { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
-    .info-card .lbl { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-    .btn-start { background: linear-gradient(135deg,var(--accent-a1),var(--accent-a2)); color: #0b0f1a; font-weight: 700; font-size: 16px; border: none; border-radius: 999px; padding: 16px 48px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 24px rgba(52,211,153,0.3); }
-    .btn-start:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(52,211,153,0.45); }
+    /* HEADER */
+    header {
+      background: rgba(17, 24, 39, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      padding: 16px 24px;
+      margin-bottom: 32px;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #fff; }
+    .nav-dots { display: flex; gap: 8px; }
+    .nav-dot { width: 12px; height: 12px; border-radius: 50%; background: #374151; cursor: pointer; transition: background 0.3s; }
+    .nav-dot.active-a1 { background: var(--accent-a1); }
+    .nav-dot.active-a2 { background: var(--accent-a2); }
+    .nav-dot.active-b1 { background: var(--accent-b1); }
 
-    /* TEST APP */
-    #test-app { display: none; }
-    .test-header { background: rgba(17,24,39,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-    .test-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; background: linear-gradient(135deg,var(--accent-a1),var(--accent-a2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .progress-info { display: flex; align-items: center; gap: 16px; }
-    .progress-text { font-size: 13px; color: var(--text-muted); }
-    .progress-bar-wrap { width: 180px; height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
-    .progress-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,var(--accent-a1),var(--accent-a2)); transition: width 0.5s ease; }
+    /* SECTIONS */
+    .test-section { display: none; margin-bottom: 80px; }
+    .test-section.active { display: block; }
 
-    /* LEVEL SECTIONS */
-    .level-section { max-width: 860px; margin: 0 auto; padding: 48px 24px; display: none; }
-    .level-section.active { display: block; }
-    .level-banner { border-radius: var(--radius-lg); padding: 32px 36px; margin-bottom: 36px; position: relative; overflow: hidden; }
-    .level-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,rgba(255,255,255,0.04),transparent); }
-    .level-banner-a1  { background: linear-gradient(135deg,rgba(52,211,153,0.15),rgba(52,211,153,0.04)); border: 1px solid rgba(52,211,153,0.25); }
-    .level-banner-a2  { background: linear-gradient(135deg,rgba(96,165,250,0.15),rgba(96,165,250,0.04)); border: 1px solid rgba(96,165,250,0.25); }
-    .level-banner-b1  { background: linear-gradient(135deg,rgba(167,139,250,0.15),rgba(167,139,250,0.04)); border: 1px solid rgba(167,139,250,0.25); }
-    .level-banner-b1p { background: linear-gradient(135deg,rgba(244,114,182,0.15),rgba(244,114,182,0.04)); border: 1px solid rgba(244,114,182,0.25); }
-    .level-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
-    .tag-a1  { background: rgba(52,211,153,0.15);  color: var(--accent-a1); }
-    .tag-a2  { background: rgba(96,165,250,0.15);  color: var(--accent-a2); }
-    .tag-b1  { background: rgba(167,139,250,0.15); color: var(--accent-b1); }
-    .tag-b1p { background: rgba(244,114,182,0.15); color: var(--accent-b1p); }
-    .level-title { font-family: 'Playfair Display', serif; font-size: clamp(24px,4vw,36px); font-weight: 800; margin-bottom: 8px; }
-    .level-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+    .banner {
+      padding: 28px; border-radius: var(--radius-lg); margin-bottom: 32px;
+      border-left: 6px solid;
+    }
+    .banner-a1 { background: rgba(16, 185, 129, 0.1); border-color: var(--accent-a1); }
+    .banner-a2 { background: rgba(59, 130, 246, 0.1); border-color: var(--accent-a2); }
+    .banner-b1 { background: rgba(139, 92, 246, 0.1); border-color: var(--accent-b1); }
 
-    /* SKILL BLOCK */
-    .skill-block { margin-bottom: 40px; }
-    .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .skill-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-    .icon-grammar  { background: rgba(52,211,153,0.12); }
-    .icon-vocab    { background: rgba(96,165,250,0.12); }
-    .icon-reading  { background: rgba(167,139,250,0.12); }
-    .icon-speaking { background: rgba(244,114,182,0.12); }
-    .skill-name { font-size: 16px; font-weight: 700; display: flex; flex-direction: column; }
-    .skill-name span { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
+    .banner-title { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 6px; }
+    .banner-desc { font-size: 14px; color: var(--text-secondary); }
 
-    /* QUESTION CARD */
-    .q-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 16px; transition: border-color 0.2s; }
-    .q-card:hover { border-color: rgba(255,255,255,0.15); }
-    .q-number { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-    .q-stem { font-size: 15px; line-height: 1.7; color: var(--text-primary); margin-bottom: 16px; }
-    .q-stem strong { color: var(--accent-a2); }
-    .options { display: flex; flex-direction: column; gap: 10px; }
-    .option-label { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s; font-size: 14px; color: var(--text-secondary); }
-    .option-label:hover { border-color: rgba(255,255,255,0.2); color: var(--text-primary); background: rgba(255,255,255,0.03); }
-    .option-label input[type="radio"] { display: none; }
-    .option-box { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; position: relative; transition: all 0.2s; }
-    .option-label input:checked ~ .option-box { border-color: var(--accent-a2); background: var(--accent-a2); }
-    .option-label input:checked ~ .option-box::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 6px; height: 6px; border-radius: 50%; background: #0b0f1a; }
-    .option-label:has(input:checked) { border-color: rgba(96,165,250,0.4); color: var(--text-primary); background: rgba(96,165,250,0.06); }
-    .blank-input { width: 100%; padding: 12px 16px; font-size: 15px; font-family: inherit; background: var(--bg-card2); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); outline: none; transition: border-color 0.2s; }
-    .blank-input:focus { border-color: var(--accent-a2); }
-    .blank-input::placeholder { color: var(--text-muted); }
+    .part-title {
+      font-size: 18px; font-weight: 700; margin: 32px 0 16px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
 
-    /* READING */
-    .reading-passage { background: var(--bg-card2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 20px; line-height: 1.9; font-size: 15px; color: var(--text-secondary); }
-    .reading-passage h4 { color: var(--text-primary); margin-bottom: 12px; font-size: 16px; }
+    /* CARDS */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px; margin-bottom: 20px;
+    }
+    .card-title { font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; font-weight: 600; }
+    .question-text { font-size: 15px; font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
+    
+    .options-grid { display: flex; flex-direction: column; gap: 10px; }
+    .option-btn {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; border-radius: 8px;
+      background: var(--bg-card2); border: 1px solid var(--border);
+      color: var(--text-secondary); cursor: pointer; text-align: left;
+      font-size: 14px; width: 100%; transition: all 0.2s;
+    }
+    .option-btn:hover { background: #374151; color: #fff; }
+    .option-btn input { display: none; }
+    .option-btn.selected {
+      border-color: #60a5fa; background: rgba(59, 130, 246, 0.15); color: #fff;
+    }
+
+    .passage {
+      background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px;
+      line-height: 1.8; color: var(--text-secondary); font-size: 15px;
+    }
+    .passage h3 { color: #fff; margin-bottom: 12px; }
 
     /* SPEAKING */
-    .speaking-card { background: linear-gradient(135deg,rgba(244,114,182,0.08),rgba(167,139,250,0.05)); border: 1px solid rgba(244,114,182,0.2); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 16px; }
-    .speaking-prompt { font-size: 15px; color: var(--text-primary); line-height: 1.8; margin-bottom: 14px; }
-    .speaking-tip { font-size: 13px; color: var(--text-muted); padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid rgba(244,114,182,0.5); }
-    .speaking-tip strong { color: var(--accent-b1p); }
-    .speaking-notes { width: 100%; margin-top: 14px; padding: 12px 16px; background: var(--bg-deep); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); font-family: inherit; font-size: 14px; resize: vertical; min-height: 80px; outline: none; transition: border-color 0.2s; }
-    .speaking-notes:focus { border-color: var(--accent-b1p); }
-    .speaking-notes::placeholder { color: var(--text-muted); }
-
-    /* NAV */
-    .section-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
-    .btn-nav { padding: 12px 28px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; transition: all 0.25s ease; }
-    .btn-prev { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
-    .btn-prev:hover { border-color: rgba(255,255,255,0.25); color: var(--text-primary); }
-    .btn-next-a1  { background: linear-gradient(135deg,var(--accent-a1),#059669);  color: #fff; }
-    .btn-next-a2  { background: linear-gradient(135deg,var(--accent-a2),#2563eb);  color: #fff; }
-    .btn-next-b1  { background: linear-gradient(135deg,var(--accent-b1),#7c3aed);  color: #fff; }
-    .btn-next-b1p { background: linear-gradient(135deg,var(--accent-b1p),#be185d); color: #fff; }
-    .btn-nav:not(.btn-prev):hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
-
-    /* RESULTS */
-    #results { display: none; max-width: 760px; margin: 0 auto; padding: 60px 24px; }
-    .results-hero { text-align: center; margin-bottom: 48px; }
-    .results-icon { font-size: 64px; margin-bottom: 16px; }
-    .results-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,5vw,48px); font-weight: 800; margin-bottom: 12px; }
-    .results-sub { font-size: 16px; color: var(--text-secondary); }
-    .score-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 16px; margin-bottom: 40px; }
-    .score-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; text-align: center; }
-    .score-card .s-level { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
-    .score-card .s-pct { font-size: 36px; font-weight: 800; margin-bottom: 4px; }
-    .score-card .s-label { font-size: 12px; color: var(--text-muted); }
-    .result-band { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px; margin-bottom: 24px; text-align: center; }
-    .result-band h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 8px; }
-    .result-band p { color: var(--text-secondary); line-height: 1.8; max-width: 500px; margin: 0 auto; }
-    .btn-restart { display: block; margin: 0 auto; background: linear-gradient(135deg,var(--accent-a1),var(--accent-a2)); color: #0b0f1a; font-weight: 700; font-size: 15px; border: none; border-radius: 999px; padding: 14px 40px; cursor: pointer; transition: all 0.3s ease; }
-    .btn-restart:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(52,211,153,0.35); }
-
-    /* DOTS */
-    .step-dots { display: flex; gap: 8px; align-items: center; }
-    .step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s; }
-    .step-dot.done-a1  { background: var(--accent-a1); }
-    .step-dot.done-a2  { background: var(--accent-a2); }
-    .step-dot.done-b1  { background: var(--accent-b1); }
-    .step-dot.done-b1p { background: var(--accent-b1p); }
-
-    @media (max-width: 600px) {
-      .test-header { padding: 12px 16px; }
-      .progress-bar-wrap { width: 100px; }
-      .level-banner { padding: 24px; }
-      .q-card { padding: 18px 20px; }
-      .section-nav { flex-direction: column; gap: 12px; }
+    .speaking-card {
+      border-left: 4px solid #f59e0b; background: rgba(245, 158, 11, 0.05);
     }
+    .speaking-instruction { font-size: 13px; color: #f59e0b; margin-top: 8px; font-style: italic; }
+    .speaking-input {
+      width: 100%; min-height: 100px; margin-top: 14px;
+      background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px; color: #fff;
+      font-family: inherit; font-size: 14px; resize: vertical; outline: none;
+    }
+    .speaking-input:focus { border-color: #f59e0b; }
+
+    /* FOOTER NAV */
+    .nav-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 0 48px; border-top: 1px solid var(--border);
+    }
+    .btn {
+      padding: 12px 28px; border-radius: 30px; font-weight: 600; font-size: 14px;
+      cursor: pointer; border: none; transition: all 0.2s;
+    }
+    .btn-prev { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+    .btn-prev:hover { border-color: #fff; color: #fff; }
+    .btn-next { background: #fff; color: #000; }
+    .btn-next:hover { opacity: 0.9; }
+
+    /* RESULT */
+    #section-results { text-align: center; padding: 60px 24px; }
+    .results-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; margin: 32px 0;
+    }
+    .res-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 24px; border-radius: var(--radius-md);
+    }
+    .res-val { font-size: 28px; font-weight: 800; margin-top: 8px; }
   </style>
 </head>
 <body>
+
 <div class="bg-blobs" aria-hidden="true">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
 </div>
 
 <div class="wrapper">
+  <header>
+    <div class="logo">CEFR Level Placement Test</div>
+    <div class="nav-dots">
+      <div class="nav-dot active-a1" id="dot-a1" onclick="showSection('a1')"></div>
+      <div class="nav-dot" id="dot-a2" onclick="showSection('a2')"></div>
+      <div class="nav-dot" id="dot-b1" onclick="showSection('b1')"></div>
+    </div>
+  </header>
 
-  <!-- COVER -->
-  <section id="cover" aria-label="Placement Test Welcome Screen">
-    <div class="badge"><span class="badge-dot"></span>CEFR Aligned · No Answer Key</div>
-    <h1 class="hero-title">English Level<br/>Placement Test</h1>
-    <p class="hero-sub">Find your exact CEFR level — from complete beginner to confident intermediate. The test covers four key skills across four levels.</p>
-    <div class="level-pills">
-      <span class="pill pill-a1">A1 · Beginner</span>
-      <span class="pill pill-a2">A2 · Elementary</span>
-      <span class="pill pill-b1">B1 · Intermediate</span>
-      <span class="pill pill-b1p">B1+ · Upper-Intermediate</span>
+  <!-- ==================== LEVEL A1 ==================== -->
+  <section class="test-section active" id="section-a1">
+    <div class="banner banner-a1">
+      <h2 class="banner-title">A1 Level (Beginner)</h2>
+      <p class="banner-desc">Complete all parts below: Grammar, Reading, and Speaking prompts.</p>
     </div>
-    <div class="info-grid">
-      <div class="info-card"><div class="num" style="color:var(--accent-a1)">4</div><div class="lbl">CEFR Levels</div></div>
-      <div class="info-card"><div class="num" style="color:var(--accent-a2)">4</div><div class="lbl">Skills Tested</div></div>
-      <div class="info-card"><div class="num" style="color:var(--accent-b1)">60+</div><div class="lbl">Questions</div></div>
-      <div class="info-card"><div class="num" style="color:var(--accent-b1p)">~45</div><div class="lbl">Minutes</div></div>
+
+    <!-- A1 Grammar -->
+    <div class="part-title">✏️ Part 1: A1 Grammar (10 Questions)</div>
+    
+    <div class="card">
+      <div class="card-title">Question 1</div>
+      <div class="question-text">I _____ a student.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g1', 'a')"><input type="radio" name="a1g1" value="a"/>am</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g1', 'b')"><input type="radio" name="a1g1" value="b"/>is</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g1', 'c')"><input type="radio" name="a1g1" value="c"/>are</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g1', 'd')"><input type="radio" name="a1g1" value="d"/>be</button>
+      </div>
     </div>
-    <button class="btn-start" id="startBtn" onclick="startTest()">Begin Placement Test →</button>
+
+    <div class="card">
+      <div class="card-title">Question 2</div>
+      <div class="question-text">Look at those _____ playing in the park.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g2', 'a')"><input type="radio" name="a1g2" value="a"/>child</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g2', 'b')"><input type="radio" name="a1g2" value="b"/>children</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g2', 'c')"><input type="radio" name="a1g2" value="c"/>childs</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g2', 'd')"><input type="radio" name="a1g2" value="d"/>childrens</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 3</div>
+      <div class="question-text">This is my brother. _____ name is Paul.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g3', 'a')"><input type="radio" name="a1g3" value="a"/>He</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g3', 'b')"><input type="radio" name="a1g3" value="b"/>Him</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g3', 'c')"><input type="radio" name="a1g3" value="c"/>His</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g3', 'd')"><input type="radio" name="a1g3" value="d"/>Her</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 4</div>
+      <div class="question-text">He _____ to the gym on Mondays.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g4', 'a')"><input type="radio" name="a1g4" value="a"/>go</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g4', 'b')"><input type="radio" name="a1g4" value="b"/>goes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g4', 'c')"><input type="radio" name="a1g4" value="c"/>going</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g4', 'd')"><input type="radio" name="a1g4" value="d"/>is go</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 5</div>
+      <div class="question-text">Our class starts _____ 9 o'clock.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g5', 'a')"><input type="radio" name="a1g5" value="a"/>at</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g5', 'b')"><input type="radio" name="a1g5" value="b"/>on</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g5', 'c')"><input type="radio" name="a1g5" value="c"/>in</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g5', 'd')"><input type="radio" name="a1g5" value="d"/>for</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 6</div>
+      <div class="question-text">_____ shoes here are very comfortable.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g6', 'a')"><input type="radio" name="a1g6" value="a"/>This</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g6', 'b')"><input type="radio" name="a1g6" value="b"/>These</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g6', 'c')"><input type="radio" name="a1g6" value="c"/>That</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g6', 'd')"><input type="radio" name="a1g6" value="d"/>Those</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 7</div>
+      <div class="question-text">_____ is my phone? I can't find it.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g7', 'a')"><input type="radio" name="a1g7" value="a"/>What</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g7', 'b')"><input type="radio" name="a1g7" value="b"/>Where</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g7', 'c')"><input type="radio" name="a1g7" value="c"/>Who</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g7', 'd')"><input type="radio" name="a1g7" value="d"/>When</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 8</div>
+      <div class="question-text">This is _____ car.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g8', 'a')"><input type="radio" name="a1g8" value="a"/>Sarah</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g8', 'b')"><input type="radio" name="a1g8" value="b"/>Sarah's</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g8', 'c')"><input type="radio" name="a1g8" value="c"/>Sarahs</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g8', 'd')"><input type="radio" name="a1g8" value="d"/>Sarahs'</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 9</div>
+      <div class="question-text">They _____ like coffee. They prefer tea.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g9', 'a')"><input type="radio" name="a1g9" value="a"/>don't</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g9', 'b')"><input type="radio" name="a1g9" value="b"/>doesn't</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g9', 'c')"><input type="radio" name="a1g9" value="c"/>not</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g9', 'd')"><input type="radio" name="a1g9" value="d"/>no</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 10</div>
+      <div class="question-text">She _____ play the piano. She is a total beginner.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1g10', 'a')"><input type="radio" name="a1g10" value="a"/>can</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g10', 'b')"><input type="radio" name="a1g10" value="b"/>cannot</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g10', 'c')"><input type="radio" name="a1g10" value="c"/>could</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1g10', 'd')"><input type="radio" name="a1g10" value="d"/>is can</button>
+      </div>
+    </div>
+
+    <!-- A1 Reading -->
+    <div class="part-title">📖 Part 2: A1 Reading Comprehension (10 Questions)</div>
+    
+    <div class="passage">
+      <h3>The Daily Life of Jack</h3>
+      Jack is a 25-year-old engineer who lives in a quiet town near Manchester. Every morning, he wakes up at 6:30 AM. He drinks a cup of black coffee and eats an apple for breakfast. After breakfast, Jack walks to the train station. The train to his office leaves at 7:15 AM and takes 40 minutes. He works from 8:00 AM to 5:00 PM. 
+      <br/><br/>
+      In the evenings, Jack enjoys cooking healthy meals and listening to jazz music. On weekends, he often meets his friends at a local café or plays football in the park. Jack loves his lifestyle, but he wants to move to a larger city next year to find a better job opportunity.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 11 (Reading 1)</div>
+      <div class="question-text">How old is Jack?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r1', 'a')"><input type="radio" name="a1r1" value="a"/>20</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r1', 'b')"><input type="radio" name="a1r1" value="b"/>25</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r1', 'c')"><input type="radio" name="a1r1" value="c"/>30</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r1', 'd')"><input type="radio" name="a1r1" value="d"/>35</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 12 (Reading 2)</div>
+      <div class="question-text">Where does Jack live?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r2', 'a')"><input type="radio" name="a1r2" value="a"/>In the city centre of Manchester</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r2', 'b')"><input type="radio" name="a1r2" value="b"/>In a quiet town near Manchester</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r2', 'c')"><input type="radio" name="a1r2" value="c"/>In London</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r2', 'd')"><input type="radio" name="a1r2" value="d"/>In a village far from Manchester</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 13 (Reading 3)</div>
+      <div class="question-text">What does Jack have for breakfast?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r3', 'a')"><input type="radio" name="a1r3" value="a"/>Tea and toast</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r3', 'b')"><input type="radio" name="a1r3" value="b"/>Coffee and bread</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r3', 'c')"><input type="radio" name="a1r3" value="c"/>Black coffee and an apple</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r3', 'd')"><input type="radio" name="a1r3" value="d"/>Egg and juice</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 14 (Reading 4)</div>
+      <div class="question-text">How does Jack travel to work?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r4', 'a')"><input type="radio" name="a1r4" value="a"/>By car</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r4', 'b')"><input type="radio" name="a1r4" value="b"/>By train</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r4', 'c')"><input type="radio" name="a1r4" value="c"/>By bicycle</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r4', 'd')"><input type="radio" name="a1r4" value="d"/>On foot</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 15 (Reading 5)</div>
+      <div class="question-text">What time does Jack's train leave?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r5', 'a')"><input type="radio" name="a1r5" value="a"/>6:30 AM</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r5', 'b')"><input type="radio" name="a1r5" value="b"/>7:15 AM</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r5', 'c')"><input type="radio" name="a1r5" value="c"/>8:00 AM</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r5', 'd')"><input type="radio" name="a1r5" value="d"/>5:00 PM</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 16 (Reading 6)</div>
+      <div class="question-text">How long is Jack's train journey?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r6', 'a')"><input type="radio" name="a1r6" value="a"/>30 minutes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r6', 'b')"><input type="radio" name="a1r6" value="b"/>40 minutes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r6', 'c')"><input type="radio" name="a1r6" value="c"/>1 hour</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r6', 'd')"><input type="radio" name="a1r6" value="d"/>15 minutes</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 17 (Reading 7)</div>
+      <div class="question-text">What genre of music does Jack listen to in the evening?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r7', 'a')"><input type="radio" name="a1r7" value="a"/>Pop</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r7', 'b')"><input type="radio" name="a1r7" value="b"/>Rock</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r7', 'c')"><input type="radio" name="a1r7" value="c"/>Classical</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r7', 'd')"><input type="radio" name="a1r7" value="d"/>Jazz</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 18 (Reading 8)</div>
+      <div class="question-text">What does Jack do on weekends?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r8', 'a')"><input type="radio" name="a1r8" value="a"/>He goes to the office.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r8', 'b')"><input type="radio" name="a1r8" value="b"/>He stays home and cooks all day.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r8', 'c')"><input type="radio" name="a1r8" value="c"/>He meets friends or plays football.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r8', 'd')"><input type="radio" name="a1r8" value="d"/>He travels to Manchester city center.</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 19 (Reading 9)</div>
+      <div class="question-text">Where does Jack meet his friends?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r9', 'a')"><input type="radio" name="a1r9" value="a"/>At a local café</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r9', 'b')"><input type="radio" name="a1r9" value="b"/>At his house</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r9', 'c')"><input type="radio" name="a1r9" value="c"/>At the train station</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r9', 'd')"><input type="radio" name="a1r9" value="d"/>At his office</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 20 (Reading 10)</div>
+      <div class="question-text">Why does Jack want to move next year?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a1r10', 'a')"><input type="radio" name="a1r10" value="a"/>Because he hates his current town.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r10', 'b')"><input type="radio" name="a1r10" value="b"/>Because he wants a better job opportunity in a larger city.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r10', 'c')"><input type="radio" name="a1r10" value="c"/>Because he wants to live closer to his family.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a1r10', 'd')"><input type="radio" name="a1r10" value="d"/>Because he wants to stop working.</button>
+      </div>
+    </div>
+
+    <!-- A1 Speaking -->
+    <div class="part-title">🎙️ Part 3: A1 Speaking Prompts (10 Prompts)</div>
+    
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 1</div>
+      <p class="question-text">Introduce yourself: What is your name and where do you live?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 2</div>
+      <p class="question-text">What is your favourite food? Why do you like it?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 3</div>
+      <p class="question-text">Describe your family: How many brothers and sisters do you have?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 4</div>
+      <p class="question-text">What time do you usually wake up on weekdays?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 5</div>
+      <p class="question-text">What do you like to do in your free time?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 6</div>
+      <p class="question-text">Describe your bedroom: What colour are the walls? What furniture is there?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 7</div>
+      <p class="question-text">What is the weather like today in your city?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 8</div>
+      <p class="question-text">How do you usually go to work or school?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 9</div>
+      <p class="question-text">What is your favourite animal? Why?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 10</div>
+      <p class="question-text">Where did you go last weekend?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="nav-footer">
+      <span></span>
+      <button class="btn btn-next" onclick="showSection('a2')">Go to A2 Section →</button>
+    </div>
   </section>
 
-  <!-- TEST APP -->
-  <div id="test-app" role="main">
+  <!-- ==================== LEVEL A2 ==================== -->
+  <section class="test-section" id="section-a2">
+    <div class="banner banner-a2">
+      <h2 class="banner-title">A2 Level (Elementary)</h2>
+      <p class="banner-desc">Complete all parts below: Grammar, Reading, and Speaking prompts.</p>
+    </div>
 
-    <header class="test-header" aria-label="Test Progress">
-      <span class="test-logo">CEFR Placement</span>
-      <div class="progress-info">
-        <div class="step-dots">
-          <div class="step-dot" id="dot-a1"></div>
-          <div class="step-dot" id="dot-a2"></div>
-          <div class="step-dot" id="dot-b1"></div>
-          <div class="step-dot" id="dot-b1p"></div>
-        </div>
-        <span class="progress-text" id="progressText">Level 1 of 4</span>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar-fill" id="progressBar" style="width:25%"></div>
-        </div>
-      </div>
-    </header>
+    <!-- A2 Grammar -->
+    <div class="part-title">✏️ Part 1: A2 Grammar (15 Questions)</div>
 
-    <!-- ════════════════════════ A1 ════════════════════════ -->
-    <section class="level-section active" id="section-a1" aria-label="A1 Level Test">
-      <div class="level-banner level-banner-a1">
-        <div class="level-tag tag-a1">Level A1</div>
-        <h2 class="level-title">Beginner</h2>
-        <p class="level-desc">At this level, you can understand and use familiar everyday expressions and very basic phrases. Answer all four skill areas below.</p>
+    <div class="card">
+      <div class="card-title">Question 21</div>
+      <div class="question-text">What _____ you do last weekend?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g1', 'a')"><input type="radio" name="a2g1" value="a"/>do</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g1', 'b')"><input type="radio" name="a2g1" value="b"/>did</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g1', 'c')"><input type="radio" name="a2g1" value="c"/>was</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g1', 'd')"><input type="radio" name="a2g1" value="d"/>done</button>
       </div>
+    </div>
 
-      <!-- A1 GRAMMAR -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-grammar">✏️</div>
-          <div class="skill-name">Grammar <span>Choose the correct option for each sentence.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 1</div>
-          <p class="q-stem">_____ your name?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1g1" value="a"/><div class="option-box"></div>What is</label>
-            <label class="option-label"><input type="radio" name="a1g1" value="b"/><div class="option-box"></div>How is</label>
-            <label class="option-label"><input type="radio" name="a1g1" value="c"/><div class="option-box"></div>Where is</label>
-            <label class="option-label"><input type="radio" name="a1g1" value="d"/><div class="option-box"></div>When is</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 2</div>
-          <p class="q-stem">She _____ a teacher.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1g2" value="a"/><div class="option-box"></div>have</label>
-            <label class="option-label"><input type="radio" name="a1g2" value="b"/><div class="option-box"></div>are</label>
-            <label class="option-label"><input type="radio" name="a1g2" value="c"/><div class="option-box"></div>is</label>
-            <label class="option-label"><input type="radio" name="a1g2" value="d"/><div class="option-box"></div>am</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 3</div>
-          <p class="q-stem">There _____ two cats in the garden.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1g3" value="a"/><div class="option-box"></div>is</label>
-            <label class="option-label"><input type="radio" name="a1g3" value="b"/><div class="option-box"></div>are</label>
-            <label class="option-label"><input type="radio" name="a1g3" value="c"/><div class="option-box"></div>has</label>
-            <label class="option-label"><input type="radio" name="a1g3" value="d"/><div class="option-box"></div>have</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 4</div>
-          <p class="q-stem">I _____ from Turkey.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1g4" value="a"/><div class="option-box"></div>comes</label>
-            <label class="option-label"><input type="radio" name="a1g4" value="b"/><div class="option-box"></div>am come</label>
-            <label class="option-label"><input type="radio" name="a1g4" value="c"/><div class="option-box"></div>come</label>
-            <label class="option-label"><input type="radio" name="a1g4" value="d"/><div class="option-box"></div>coming</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 5</div>
-          <p class="q-stem">_____ he have a car?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1g5" value="a"/><div class="option-box"></div>Is</label>
-            <label class="option-label"><input type="radio" name="a1g5" value="b"/><div class="option-box"></div>Does</label>
-            <label class="option-label"><input type="radio" name="a1g5" value="c"/><div class="option-box"></div>Do</label>
-            <label class="option-label"><input type="radio" name="a1g5" value="d"/><div class="option-box"></div>Has</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 22</div>
+      <div class="question-text">She _____ to London last summer.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g2', 'a')"><input type="radio" name="a2g2" value="a"/>go</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g2', 'b')"><input type="radio" name="a2g2" value="b"/>goes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g2', 'c')"><input type="radio" name="a2g2" value="c"/>went</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g2', 'd')"><input type="radio" name="a2g2" value="d"/>gone</button>
       </div>
+    </div>
 
-      <!-- A1 VOCABULARY -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-vocab">📚</div>
-          <div class="skill-name">Vocabulary <span>Choose the word that matches the meaning.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 6</div>
-          <p class="q-stem">The opposite of "hot" is _____.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1v1" value="a"/><div class="option-box"></div>warm</label>
-            <label class="option-label"><input type="radio" name="a1v1" value="b"/><div class="option-box"></div>cold</label>
-            <label class="option-label"><input type="radio" name="a1v1" value="c"/><div class="option-box"></div>big</label>
-            <label class="option-label"><input type="radio" name="a1v1" value="d"/><div class="option-box"></div>fast</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 7</div>
-          <p class="q-stem">Which word is a colour?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1v2" value="a"/><div class="option-box"></div>table</label>
-            <label class="option-label"><input type="radio" name="a1v2" value="b"/><div class="option-box"></div>run</label>
-            <label class="option-label"><input type="radio" name="a1v2" value="c"/><div class="option-box"></div>purple</label>
-            <label class="option-label"><input type="radio" name="a1v2" value="d"/><div class="option-box"></div>happy</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 8</div>
-          <p class="q-stem">You use this to write: a _____.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1v3" value="a"/><div class="option-box"></div>spoon</label>
-            <label class="option-label"><input type="radio" name="a1v3" value="b"/><div class="option-box"></div>pen</label>
-            <label class="option-label"><input type="radio" name="a1v3" value="c"/><div class="option-box"></div>shoe</label>
-            <label class="option-label"><input type="radio" name="a1v3" value="d"/><div class="option-box"></div>window</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 9</div>
-          <p class="q-stem">Monday, Tuesday, Wednesday… What comes next?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1v4" value="a"/><div class="option-box"></div>Friday</label>
-            <label class="option-label"><input type="radio" name="a1v4" value="b"/><div class="option-box"></div>Sunday</label>
-            <label class="option-label"><input type="radio" name="a1v4" value="c"/><div class="option-box"></div>Thursday</label>
-            <label class="option-label"><input type="radio" name="a1v4" value="d"/><div class="option-box"></div>Saturday</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 23</div>
+      <div class="question-text">This laptop is _____ than that one.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g3', 'a')"><input type="radio" name="a2g3" value="a"/>cheap</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g3', 'b')"><input type="radio" name="a2g3" value="b"/>cheaper</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g3', 'c')"><input type="radio" name="a2g3" value="c"/>cheapest</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g3', 'd')"><input type="radio" name="a2g3" value="d"/>more cheap</button>
       </div>
+    </div>
 
-      <!-- A1 READING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-reading">📖</div>
-          <div class="skill-name">Reading <span>Read the text and answer the questions.</span></div>
-        </div>
-        <div class="reading-passage">
-          <h4>My Family</h4>
-          My name is Mia. I am twelve years old. I have a mother, a father, and one brother. My brother's name is Tom. He is fifteen. We live in a small house near the park. My mother is a nurse. My father is a doctor. I like school. My favourite subject is art.
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 10</div>
-          <p class="q-stem">How old is Mia?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1r1" value="a"/><div class="option-box"></div>Ten</label>
-            <label class="option-label"><input type="radio" name="a1r1" value="b"/><div class="option-box"></div>Twelve</label>
-            <label class="option-label"><input type="radio" name="a1r1" value="c"/><div class="option-box"></div>Fifteen</label>
-            <label class="option-label"><input type="radio" name="a1r1" value="d"/><div class="option-box"></div>Eight</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 11</div>
-          <p class="q-stem">What is Mia's mother's job?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1r2" value="a"/><div class="option-box"></div>Teacher</label>
-            <label class="option-label"><input type="radio" name="a1r2" value="b"/><div class="option-box"></div>Doctor</label>
-            <label class="option-label"><input type="radio" name="a1r2" value="c"/><div class="option-box"></div>Nurse</label>
-            <label class="option-label"><input type="radio" name="a1r2" value="d"/><div class="option-box"></div>Artist</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 12</div>
-          <p class="q-stem">Where does the family live?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a1r3" value="a"/><div class="option-box"></div>Near the school</label>
-            <label class="option-label"><input type="radio" name="a1r3" value="b"/><div class="option-box"></div>Near the park</label>
-            <label class="option-label"><input type="radio" name="a1r3" value="c"/><div class="option-box"></div>Near the hospital</label>
-            <label class="option-label"><input type="radio" name="a1r3" value="d"/><div class="option-box"></div>Near the market</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 24</div>
+      <div class="question-text">He is the _____ player on the team.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g4', 'a')"><input type="radio" name="a2g4" value="a"/>better</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g4', 'b')"><input type="radio" name="a2g4" value="b"/>goodest</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g4', 'c')"><input type="radio" name="a2g4" value="c"/>best</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g4', 'd')"><input type="radio" name="a2g4" value="d"/>most good</button>
       </div>
+    </div>
 
-      <!-- A1 SPEAKING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-speaking">🎙️</div>
-          <div class="skill-name">Speaking <span>Prepare your spoken answers. Use the note box to plan.</span></div>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 1 — Introduce yourself.</strong><br/>Say your name, age, where you are from, and one thing you like. Speak for about 30 seconds.</p>
-          <div class="speaking-tip"><strong>Language to use:</strong> "My name is… I am… years old. I am from… I like…"</div>
-          <textarea class="speaking-notes" id="a1sp1" placeholder="Write your key points here to practise before speaking…"></textarea>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 2 — Describe a typical school day.</strong><br/>What time do you wake up? What do you eat for breakfast? Where do you go?</p>
-          <div class="speaking-tip"><strong>Language to use:</strong> "I wake up at… I eat… I go to… at…"</div>
-          <textarea class="speaking-notes" id="a1sp2" placeholder="Write your key points here to practise before speaking…"></textarea>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 25</div>
+      <div class="question-text">Listen! The baby _____ right now.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g5', 'a')"><input type="radio" name="a2g5" value="a"/>cries</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g5', 'b')"><input type="radio" name="a2g5" value="b"/>is crying</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g5', 'c')"><input type="radio" name="a2g5" value="c"/>was crying</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g5', 'd')"><input type="radio" name="a2g5" value="d"/>crying</button>
       </div>
+    </div>
 
-      <div class="section-nav">
-        <span></span>
-        <button class="btn-nav btn-next-a1" onclick="goToSection('a2')">Continue to A2 →</button>
+    <div class="card">
+      <div class="card-title">Question 26</div>
+      <div class="question-text">I _____ a book when the phone rang.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g6', 'a')"><input type="radio" name="a2g6" value="a"/>read</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g6', 'b')"><input type="radio" name="a2g6" value="b"/>was reading</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g6', 'c')"><input type="radio" name="a2g6" value="c"/>am reading</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g6', 'd')"><input type="radio" name="a2g6" value="d"/>readed</button>
       </div>
-    </section>
+    </div>
 
-    <!-- ════════════════════════ A2 ════════════════════════ -->
-    <section class="level-section" id="section-a2" aria-label="A2 Level Test">
-      <div class="level-banner level-banner-a2">
-        <div class="level-tag tag-a2">Level A2</div>
-        <h2 class="level-title">Elementary</h2>
-        <p class="level-desc">At A2, you can understand sentences and frequently used expressions related to areas of immediate relevance.</p>
+    <div class="card">
+      <div class="card-title">Question 27</div>
+      <div class="question-text">He went to the shop _____ some milk.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g7', 'a')"><input type="radio" name="a2g7" value="a"/>for buy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g7', 'b')"><input type="radio" name="a2g7" value="b"/>to buy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g7', 'c')"><input type="radio" name="a2g7" value="c"/>buying</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g7', 'd')"><input type="radio" name="a2g7" value="d"/>buy</button>
       </div>
+    </div>
 
-      <!-- A2 GRAMMAR -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-grammar">✏️</div>
-          <div class="skill-name">Grammar <span>Choose the correct form to complete each sentence.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 13</div>
-          <p class="q-stem">What _____ you do last weekend?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2g1" value="a"/><div class="option-box"></div>did</label>
-            <label class="option-label"><input type="radio" name="a2g1" value="b"/><div class="option-box"></div>do</label>
-            <label class="option-label"><input type="radio" name="a2g1" value="c"/><div class="option-box"></div>done</label>
-            <label class="option-label"><input type="radio" name="a2g1" value="d"/><div class="option-box"></div>was</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 14</div>
-          <p class="q-stem">She _____ watching TV when I called her.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2g2" value="a"/><div class="option-box"></div>is</label>
-            <label class="option-label"><input type="radio" name="a2g2" value="b"/><div class="option-box"></div>was</label>
-            <label class="option-label"><input type="radio" name="a2g2" value="c"/><div class="option-box"></div>were</label>
-            <label class="option-label"><input type="radio" name="a2g2" value="d"/><div class="option-box"></div>has been</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 15</div>
-          <p class="q-stem">There aren't _____ eggs in the fridge.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2g3" value="a"/><div class="option-box"></div>some</label>
-            <label class="option-label"><input type="radio" name="a2g3" value="b"/><div class="option-box"></div>much</label>
-            <label class="option-label"><input type="radio" name="a2g3" value="c"/><div class="option-box"></div>any</label>
-            <label class="option-label"><input type="radio" name="a2g3" value="d"/><div class="option-box"></div>no</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 16</div>
-          <p class="q-stem">She is _____ than her sister.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2g4" value="a"/><div class="option-box"></div>more tall</label>
-            <label class="option-label"><input type="radio" name="a2g4" value="b"/><div class="option-box"></div>tallest</label>
-            <label class="option-label"><input type="radio" name="a2g4" value="c"/><div class="option-box"></div>taller</label>
-            <label class="option-label"><input type="radio" name="a2g4" value="d"/><div class="option-box"></div>most tall</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 17</div>
-          <p class="q-stem">We _____ go to the cinema tomorrow evening.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2g5" value="a"/><div class="option-box"></div>going to</label>
-            <label class="option-label"><input type="radio" name="a2g5" value="b"/><div class="option-box"></div>will going</label>
-            <label class="option-label"><input type="radio" name="a2g5" value="c"/><div class="option-box"></div>are going to</label>
-            <label class="option-label"><input type="radio" name="a2g5" value="d"/><div class="option-box"></div>shall going</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 18</div>
-          <p class="q-stem">I _____ never eaten sushi before.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2g6" value="a"/><div class="option-box"></div>did</label>
-            <label class="option-label"><input type="radio" name="a2g6" value="b"/><div class="option-box"></div>have</label>
-            <label class="option-label"><input type="radio" name="a2g6" value="c"/><div class="option-box"></div>had</label>
-            <label class="option-label"><input type="radio" name="a2g6" value="d"/><div class="option-box"></div>was</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 28</div>
+      <div class="question-text">_____ you ever been to Paris?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g8', 'a')"><input type="radio" name="a2g8" value="a"/>Did</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g8', 'b')"><input type="radio" name="a2g8" value="b"/>Have</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g8', 'c')"><input type="radio" name="a2g8" value="c"/>Were</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g8', 'd')"><input type="radio" name="a2g8" value="d"/>Are</button>
       </div>
+    </div>
 
-      <!-- A2 VOCABULARY -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-vocab">📚</div>
-          <div class="skill-name">Vocabulary <span>Choose the best word or phrase to complete each sentence.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 19</div>
-          <p class="q-stem">You buy medicine at a _____.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2v1" value="a"/><div class="option-box"></div>library</label>
-            <label class="option-label"><input type="radio" name="a2v1" value="b"/><div class="option-box"></div>pharmacy</label>
-            <label class="option-label"><input type="radio" name="a2v1" value="c"/><div class="option-box"></div>supermarket</label>
-            <label class="option-label"><input type="radio" name="a2v1" value="d"/><div class="option-box"></div>bank</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 20</div>
-          <p class="q-stem">"She was very _____ after working all day."</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2v2" value="a"/><div class="option-box"></div>bored</label>
-            <label class="option-label"><input type="radio" name="a2v2" value="b"/><div class="option-box"></div>tired</label>
-            <label class="option-label"><input type="radio" name="a2v2" value="c"/><div class="option-box"></div>hungry</label>
-            <label class="option-label"><input type="radio" name="a2v2" value="d"/><div class="option-box"></div>thirsty</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 21</div>
-          <p class="q-stem">Complete the phrase: "turn _____ the light."</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2v3" value="a"/><div class="option-box"></div>of</label>
-            <label class="option-label"><input type="radio" name="a2v3" value="b"/><div class="option-box"></div>off</label>
-            <label class="option-label"><input type="radio" name="a2v3" value="c"/><div class="option-box"></div>out</label>
-            <label class="option-label"><input type="radio" name="a2v3" value="d"/><div class="option-box"></div>away</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 22</div>
-          <p class="q-stem">Which word describes how someone feels when they receive good news?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2v4" value="a"/><div class="option-box"></div>lonely</label>
-            <label class="option-label"><input type="radio" name="a2v4" value="b"/><div class="option-box"></div>nervous</label>
-            <label class="option-label"><input type="radio" name="a2v4" value="c"/><div class="option-box"></div>excited</label>
-            <label class="option-label"><input type="radio" name="a2v4" value="d"/><div class="option-box"></div>confused</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 29</div>
+      <div class="question-text">I have lived in this city _____ five years.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g9', 'a')"><input type="radio" name="a2g9" value="a"/>since</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g9', 'b')"><input type="radio" name="a2g9" value="b"/>for</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g9', 'c')"><input type="radio" name="a2g9" value="c"/>during</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g9', 'd')"><input type="radio" name="a2g9" value="d"/>ago</button>
       </div>
+    </div>
 
-      <!-- A2 READING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-reading">📖</div>
-          <div class="skill-name">Reading <span>Read the text carefully, then answer the questions.</span></div>
-        </div>
-        <div class="reading-passage">
-          <h4>Anna's Weekend</h4>
-          Last Saturday, Anna decided to visit her grandparents in the countryside. She took the early morning bus because she didn't have a car. The journey took two hours. When she arrived, her grandmother made a delicious lunch with vegetables from the garden. In the afternoon, Anna helped her grandfather fix his old bicycle. In the evening, the whole family sat outside and watched the stars. Anna was very happy and said she wanted to visit again next month.
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 23</div>
-          <p class="q-stem">How did Anna travel to her grandparents' house?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2r1" value="a"/><div class="option-box"></div>By car</label>
-            <label class="option-label"><input type="radio" name="a2r1" value="b"/><div class="option-box"></div>By train</label>
-            <label class="option-label"><input type="radio" name="a2r1" value="c"/><div class="option-box"></div>By bus</label>
-            <label class="option-label"><input type="radio" name="a2r1" value="d"/><div class="option-box"></div>By bicycle</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 24</div>
-          <p class="q-stem">What did Anna do in the afternoon?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2r2" value="a"/><div class="option-box"></div>She cooked lunch.</label>
-            <label class="option-label"><input type="radio" name="a2r2" value="b"/><div class="option-box"></div>She repaired the bicycle.</label>
-            <label class="option-label"><input type="radio" name="a2r2" value="c"/><div class="option-box"></div>She watched the stars.</label>
-            <label class="option-label"><input type="radio" name="a2r2" value="d"/><div class="option-box"></div>She took photographs.</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 25</div>
-          <p class="q-stem">Why did Anna take the bus? Because she _____.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="a2r3" value="a"/><div class="option-box"></div>likes buses</label>
-            <label class="option-label"><input type="radio" name="a2r3" value="b"/><div class="option-box"></div>doesn't have a car</label>
-            <label class="option-label"><input type="radio" name="a2r3" value="c"/><div class="option-box"></div>the bus is faster</label>
-            <label class="option-label"><input type="radio" name="a2r3" value="d"/><div class="option-box"></div>the train was full</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 30</div>
+      <div class="question-text">You _____ wear a seatbelt in the car. It is the law.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g10', 'a')"><input type="radio" name="a2g10" value="a"/>might</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g10', 'b')"><input type="radio" name="a2g10" value="b"/>must</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g10', 'c')"><input type="radio" name="a2g10" value="c"/>shouldn't</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g10', 'd')"><input type="radio" name="a2g10" value="d"/>can</button>
       </div>
+    </div>
 
-      <!-- A2 SPEAKING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-speaking">🎙️</div>
-          <div class="skill-name">Speaking <span>Read each task and prepare your spoken response.</span></div>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 1 — Talk about your home.</strong><br/>Describe your home. How many rooms are there? What is your favourite room and why? Speak for 45 seconds.</p>
-          <div class="speaking-tip"><strong>Useful language:</strong> "My home has… There is / are… My favourite room is… because…"</div>
-          <textarea class="speaking-notes" id="a2sp1" placeholder="Note down ideas before you speak…"></textarea>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 2 — Talk about past activities.</strong><br/>What did you do last weekend? Talk about at least three activities. Were they enjoyable? Why or why not?</p>
-          <div class="speaking-tip"><strong>Useful language:</strong> "Last weekend I… I also… It was (fun/boring/interesting) because…"</div>
-          <textarea class="speaking-notes" id="a2sp2" placeholder="Note down ideas before you speak…"></textarea>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 31</div>
+      <div class="question-text">I think it _____ rain tomorrow. Look at those dark clouds.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g11', 'a')"><input type="radio" name="a2g11" value="a"/>will</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g11', 'b')"><input type="radio" name="a2g11" value="b"/>goes to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g11', 'c')"><input type="radio" name="a2g11" value="c"/>shall</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g11', 'd')"><input type="radio" name="a2g11" value="d"/>is going</button>
       </div>
+    </div>
 
-      <div class="section-nav">
-        <button class="btn-nav btn-prev" onclick="goToSection('a1')">← Back to A1</button>
-        <button class="btn-nav btn-next-a2" onclick="goToSection('b1')">Continue to B1 →</button>
+    <div class="card">
+      <div class="card-title">Question 32</div>
+      <div class="question-text">They _____ watch a movie tonight. They bought the tickets.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g12', 'a')"><input type="radio" name="a2g12" value="a"/>are going to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g12', 'b')"><input type="radio" name="a2g12" value="b"/>will</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g12', 'c')"><input type="radio" name="a2g12" value="c"/>going to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g12', 'd')"><input type="radio" name="a2g12" value="d"/>go to</button>
       </div>
-    </section>
+    </div>
 
-    <!-- ════════════════════════ B1 ════════════════════════ -->
-    <section class="level-section" id="section-b1" aria-label="B1 Level Test">
-      <div class="level-banner level-banner-b1">
-        <div class="level-tag tag-b1">Level B1</div>
-        <h2 class="level-title">Intermediate</h2>
-        <p class="level-desc">At B1, you can understand the main points of clear standard input on familiar matters and produce connected text on familiar topics.</p>
+    <div class="card">
+      <div class="card-title">Question 33</div>
+      <div class="question-text">There is _____ milk in the bottle. We need to buy more.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g13', 'a')"><input type="radio" name="a2g13" value="a"/>a few</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g13', 'b')"><input type="radio" name="a2g13" value="b"/>a little</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g13', 'c')"><input type="radio" name="a2g13" value="c"/>many</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g13', 'd')"><input type="radio" name="a2g13" value="d"/>any</button>
       </div>
+    </div>
 
-      <!-- B1 GRAMMAR -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-grammar">✏️</div>
-          <div class="skill-name">Grammar <span>Choose the grammatically correct option.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 26</div>
-          <p class="q-stem">If I _____ more time, I would travel more.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1g1" value="a"/><div class="option-box"></div>have</label>
-            <label class="option-label"><input type="radio" name="b1g1" value="b"/><div class="option-box"></div>had</label>
-            <label class="option-label"><input type="radio" name="b1g1" value="c"/><div class="option-box"></div>will have</label>
-            <label class="option-label"><input type="radio" name="b1g1" value="d"/><div class="option-box"></div>had had</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 27</div>
-          <p class="q-stem">The report _____ by the manager last Friday.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1g2" value="a"/><div class="option-box"></div>wrote</label>
-            <label class="option-label"><input type="radio" name="b1g2" value="b"/><div class="option-box"></div>was written</label>
-            <label class="option-label"><input type="radio" name="b1g2" value="c"/><div class="option-box"></div>has written</label>
-            <label class="option-label"><input type="radio" name="b1g2" value="d"/><div class="option-box"></div>is written</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 28</div>
-          <p class="q-stem">She suggested _____ to the new restaurant downtown.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1g3" value="a"/><div class="option-box"></div>to go</label>
-            <label class="option-label"><input type="radio" name="b1g3" value="b"/><div class="option-box"></div>going</label>
-            <label class="option-label"><input type="radio" name="b1g3" value="c"/><div class="option-box"></div>go</label>
-            <label class="option-label"><input type="radio" name="b1g3" value="d"/><div class="option-box"></div>for going</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 29</div>
-          <p class="q-stem">By the time we arrived, the film _____.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1g4" value="a"/><div class="option-box"></div>already started</label>
-            <label class="option-label"><input type="radio" name="b1g4" value="b"/><div class="option-box"></div>had already started</label>
-            <label class="option-label"><input type="radio" name="b1g4" value="c"/><div class="option-box"></div>has already started</label>
-            <label class="option-label"><input type="radio" name="b1g4" value="d"/><div class="option-box"></div>was already starting</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 30</div>
-          <p class="q-stem">You _____ smoke in this building. It is strictly forbidden.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1g5" value="a"/><div class="option-box"></div>don't have to</label>
-            <label class="option-label"><input type="radio" name="b1g5" value="b"/><div class="option-box"></div>mustn't</label>
-            <label class="option-label"><input type="radio" name="b1g5" value="c"/><div class="option-box"></div>shouldn't</label>
-            <label class="option-label"><input type="radio" name="b1g5" value="d"/><div class="option-box"></div>needn't</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 31</div>
-          <p class="q-stem">He asked me _____ I had finished the project.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1g6" value="a"/><div class="option-box"></div>if</label>
-            <label class="option-label"><input type="radio" name="b1g6" value="b"/><div class="option-box"></div>that</label>
-            <label class="option-label"><input type="radio" name="b1g6" value="c"/><div class="option-box"></div>what</label>
-            <label class="option-label"><input type="radio" name="b1g6" value="d"/><div class="option-box"></div>which</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 34</div>
+      <div class="question-text">Did you buy _____ at the supermarket?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g14', 'a')"><input type="radio" name="a2g14" value="a"/>anything</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g14', 'b')"><input type="radio" name="a2g14" value="b"/>something</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g14', 'c')"><input type="radio" name="a2g14" value="c"/>nothing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g14', 'd')"><input type="radio" name="a2g14" value="d"/>anywhere</button>
       </div>
+    </div>
 
-      <!-- B1 VOCABULARY -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-vocab">📚</div>
-          <div class="skill-name">Vocabulary <span>Choose the word that best fits each context.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 32</div>
-          <p class="q-stem">The new law will _____ people from smoking in public areas.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1v1" value="a"/><div class="option-box"></div>stop</label>
-            <label class="option-label"><input type="radio" name="b1v1" value="b"/><div class="option-box"></div>prevent</label>
-            <label class="option-label"><input type="radio" name="b1v1" value="c"/><div class="option-box"></div>avoid</label>
-            <label class="option-label"><input type="radio" name="b1v1" value="d"/><div class="option-box"></div>refuse</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 33</div>
-          <p class="q-stem">Despite the heavy rain, the match _____ as planned.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1v2" value="a"/><div class="option-box"></div>went ahead</label>
-            <label class="option-label"><input type="radio" name="b1v2" value="b"/><div class="option-box"></div>went on</label>
-            <label class="option-label"><input type="radio" name="b1v2" value="c"/><div class="option-box"></div>went by</label>
-            <label class="option-label"><input type="radio" name="b1v2" value="d"/><div class="option-box"></div>went off</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 34</div>
-          <p class="q-stem">The politician gave a long _____ about the economy.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1v3" value="a"/><div class="option-box"></div>chat</label>
-            <label class="option-label"><input type="radio" name="b1v3" value="b"/><div class="option-box"></div>speech</label>
-            <label class="option-label"><input type="radio" name="b1v3" value="c"/><div class="option-box"></div>gossip</label>
-            <label class="option-label"><input type="radio" name="b1v3" value="d"/><div class="option-box"></div>whisper</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 35</div>
-          <p class="q-stem">I am absolutely _____ of spiders — even small ones scare me.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1v4" value="a"/><div class="option-box"></div>terrified</label>
-            <label class="option-label"><input type="radio" name="b1v4" value="b"/><div class="option-box"></div>afraid</label>
-            <label class="option-label"><input type="radio" name="b1v4" value="c"/><div class="option-box"></div>scared</label>
-            <label class="option-label"><input type="radio" name="b1v4" value="d"/><div class="option-box"></div>frightened</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 35</div>
+      <div class="question-text">He drives very _____ on wet roads.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2g15', 'a')"><input type="radio" name="a2g15" value="a"/>careful</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g15', 'b')"><input type="radio" name="a2g15" value="b"/>carefully</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g15', 'c')"><input type="radio" name="a2g15" value="c"/>more careful</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2g15', 'd')"><input type="radio" name="a2g15" value="d"/>carefulness</button>
       </div>
+    </div>
 
-      <!-- B1 READING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-reading">📖</div>
-          <div class="skill-name">Reading <span>Read the article and answer the comprehension questions.</span></div>
-        </div>
-        <div class="reading-passage">
-          <h4>The Rise of Urban Farming</h4>
-          In recent years, urban farming has become an increasingly popular trend in cities around the world. With growing concerns about food security and environmental sustainability, more and more city dwellers are turning small rooftops, balconies, and even old warehouses into productive vegetable gardens.<br/><br/>
-          Supporters argue that urban farms can reduce the distance food travels from farm to table, significantly lowering carbon emissions. Furthermore, growing your own food can be a meaningful way to reconnect with nature and build a stronger sense of community.<br/><br/>
-          However, critics point out that urban farming faces serious challenges. Space and sunlight are limited in many cities, and the initial cost of setting up a garden can be quite high. Some experts also question whether small-scale urban farming can ever produce enough food to make a meaningful impact on a city's overall food supply. Despite these concerns, the movement continues to grow, driven by passionate volunteers and forward-thinking local governments.
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 36</div>
-          <p class="q-stem">According to the article, what is one environmental benefit of urban farming?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1r1" value="a"/><div class="option-box"></div>It creates more jobs in cities.</label>
-            <label class="option-label"><input type="radio" name="b1r1" value="b"/><div class="option-box"></div>It reduces the carbon footprint of food transport.</label>
-            <label class="option-label"><input type="radio" name="b1r1" value="c"/><div class="option-box"></div>It makes cities look more attractive.</label>
-            <label class="option-label"><input type="radio" name="b1r1" value="d"/><div class="option-box"></div>It eliminates the need for traditional farms.</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 37</div>
-          <p class="q-stem">What challenge does the article mention regarding urban farming?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1r2" value="a"/><div class="option-box"></div>People in cities don't like eating vegetables.</label>
-            <label class="option-label"><input type="radio" name="b1r2" value="b"/><div class="option-box"></div>The setup costs can be high and space is limited.</label>
-            <label class="option-label"><input type="radio" name="b1r2" value="c"/><div class="option-box"></div>Governments are against urban farming.</label>
-            <label class="option-label"><input type="radio" name="b1r2" value="d"/><div class="option-box"></div>It requires expensive high-tech equipment.</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 38</div>
-          <p class="q-stem">The word <strong>"passionate"</strong> in the last sentence is closest in meaning to:</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1r3" value="a"/><div class="option-box"></div>professional</label>
-            <label class="option-label"><input type="radio" name="b1r3" value="b"/><div class="option-box"></div>enthusiastic</label>
-            <label class="option-label"><input type="radio" name="b1r3" value="c"/><div class="option-box"></div>experienced</label>
-            <label class="option-label"><input type="radio" name="b1r3" value="d"/><div class="option-box"></div>organised</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 39</div>
-          <p class="q-stem">The author's overall tone in this article can best be described as:</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1r4" value="a"/><div class="option-box"></div>strongly against urban farming</label>
-            <label class="option-label"><input type="radio" name="b1r4" value="b"/><div class="option-box"></div>balanced — showing both benefits and drawbacks</label>
-            <label class="option-label"><input type="radio" name="b1r4" value="c"/><div class="option-box"></div>completely in favour of urban farming</label>
-            <label class="option-label"><input type="radio" name="b1r4" value="d"/><div class="option-box"></div>uncertain and unclear</label>
-          </div>
-        </div>
-      </div>
+    <!-- A2 Reading -->
+    <div class="part-title">📖 Part 2: A2 Reading Comprehension (10 Questions)</div>
 
-      <!-- B1 SPEAKING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-speaking">🎙️</div>
-          <div class="skill-name">Speaking <span>Respond to each prompt with extended, connected speech.</span></div>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 1 — Give your opinion.</strong><br/>"Social media has more negative effects than positive ones." Do you agree or disagree? Give two reasons and one example to support your view. Speak for about 1 minute.</p>
-          <div class="speaking-tip"><strong>Structure tip:</strong> State opinion → Reason 1 (+ example) → Reason 2 → Conclude</div>
-          <textarea class="speaking-notes" id="b1sp1" placeholder="Outline your main points here…"></textarea>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 2 — Compare and contrast.</strong><br/>Compare living in a big city with living in the countryside. Discuss advantages and disadvantages of both. Which would you prefer and why?</p>
-          <div class="speaking-tip"><strong>Useful phrases:</strong> "On the other hand… whereas… both… have… In contrast to… I would prefer… because…"</div>
-          <textarea class="speaking-notes" id="b1sp2" placeholder="Outline your comparison here…"></textarea>
-        </div>
-      </div>
+    <div class="passage">
+      <h3>A Trip to the Mountains</h3>
+      Last February, the Smith family decided to go on a holiday to the French Alps. They booked a cosy wooden cabin in a small mountain village. On the first day, the weather was beautiful and sunny, so they rented skis and went to the beginner slopes. However, on the second day, a heavy snowstorm started. It was impossible to go outside because the temperature dropped below -15 degrees Celsius.
+      <br/><br/>
+      Instead of skiing, the family stayed inside. Mr. Smith lit a fire in the fireplace, and Mrs. Smith made hot chocolate for everyone. They spent the afternoon playing board games and reading stories. Although they could not ski, they enjoyed spending quality time together. By the third day, the storm ended, leaving the mountains covered in a thick blanket of fresh, white snow.
+    </div>
 
-      <div class="section-nav">
-        <button class="btn-nav btn-prev" onclick="goToSection('a2')">← Back to A2</button>
-        <button class="btn-nav btn-next-b1" onclick="goToSection('b1p')">Continue to B1+ →</button>
+    <div class="card">
+      <div class="card-title">Question 36 (Reading 1)</div>
+      <div class="question-text">When did the Smith family go on holiday?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r1', 'a')"><input type="radio" name="a2r1" value="a"/>Last summer</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r1', 'b')"><input type="radio" name="a2r1" value="b"/>Last February</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r1', 'c')"><input type="radio" name="a2r1" value="c"/>Last December</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r1', 'd')"><input type="radio" name="a2r1" value="d"/>Last spring</button>
       </div>
-    </section>
+    </div>
 
-    <!-- ════════════════════════ B1+ ════════════════════════ -->
-    <section class="level-section" id="section-b1p" aria-label="B1+ Level Test">
-      <div class="level-banner level-banner-b1p">
-        <div class="level-tag tag-b1p">Level B1+</div>
-        <h2 class="level-title">Upper-Intermediate</h2>
-        <p class="level-desc">At B1+, you can understand extended texts, express yourself fluently on a wide range of topics, and handle complex language structures with growing confidence.</p>
+    <div class="card">
+      <div class="card-title">Question 37 (Reading 2)</div>
+      <div class="question-text">Where did they stay?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r2', 'a')"><input type="radio" name="a2r2" value="a"/>In a modern hotel in the city</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r2', 'b')"><input type="radio" name="a2r2" value="b"/>In a caravan near the beach</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r2', 'c')"><input type="radio" name="a2r2" value="c"/>In a cosy wooden cabin in a village</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r2', 'd')"><input type="radio" name="a2r2" value="d"/>At a friend's house</button>
       </div>
+    </div>
 
-      <!-- B1+ GRAMMAR -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-grammar">✏️</div>
-          <div class="skill-name">Grammar <span>Select the most accurate option in each complex sentence.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 40</div>
-          <p class="q-stem">If she _____ the warning signs, the accident would never have happened.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pg1" value="a"/><div class="option-box"></div>noticed</label>
-            <label class="option-label"><input type="radio" name="b1pg1" value="b"/><div class="option-box"></div>had noticed</label>
-            <label class="option-label"><input type="radio" name="b1pg1" value="c"/><div class="option-box"></div>would notice</label>
-            <label class="option-label"><input type="radio" name="b1pg1" value="d"/><div class="option-box"></div>has noticed</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 41</div>
-          <p class="q-stem">The scientists discovered that the virus _____ mutating faster than expected.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pg2" value="a"/><div class="option-box"></div>is</label>
-            <label class="option-label"><input type="radio" name="b1pg2" value="b"/><div class="option-box"></div>was</label>
-            <label class="option-label"><input type="radio" name="b1pg2" value="c"/><div class="option-box"></div>were</label>
-            <label class="option-label"><input type="radio" name="b1pg2" value="d"/><div class="option-box"></div>has been</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 42</div>
-          <p class="q-stem">Not only _____ the exam, but she also received the highest grade in the class.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pg3" value="a"/><div class="option-box"></div>she passed</label>
-            <label class="option-label"><input type="radio" name="b1pg3" value="b"/><div class="option-box"></div>did she pass</label>
-            <label class="option-label"><input type="radio" name="b1pg3" value="c"/><div class="option-box"></div>she did pass</label>
-            <label class="option-label"><input type="radio" name="b1pg3" value="d"/><div class="option-box"></div>passed she</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 43</div>
-          <p class="q-stem">The government's decision to cut funding for public transport has been widely _____.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pg4" value="a"/><div class="option-box"></div>critique</label>
-            <label class="option-label"><input type="radio" name="b1pg4" value="b"/><div class="option-box"></div>criticised</label>
-            <label class="option-label"><input type="radio" name="b1pg4" value="c"/><div class="option-box"></div>criticising</label>
-            <label class="option-label"><input type="radio" name="b1pg4" value="d"/><div class="option-box"></div>critical</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 44</div>
-          <p class="q-stem">I wish I _____ so much time on social media last year.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pg5" value="a"/><div class="option-box"></div>didn't spend</label>
-            <label class="option-label"><input type="radio" name="b1pg5" value="b"/><div class="option-box"></div>hadn't spent</label>
-            <label class="option-label"><input type="radio" name="b1pg5" value="c"/><div class="option-box"></div>wouldn't spend</label>
-            <label class="option-label"><input type="radio" name="b1pg5" value="d"/><div class="option-box"></div>won't spend</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 45 — Fill in the blank</div>
-          <p class="q-stem">Despite _____ (work) all night, she managed to finish the report before the deadline.</p>
-          <input type="text" class="blank-input" id="b1pg6" placeholder="Write the correct form of the verb 'work'…"/>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 38 (Reading 3)</div>
+      <div class="question-text">What was the weather like on the first day?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r3', 'a')"><input type="radio" name="a2r3" value="a"/>Rainy and cold</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r3', 'b')"><input type="radio" name="a2r3" value="b"/>Foggy and windy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r3', 'c')"><input type="radio" name="a2r3" value="c"/>Beautiful and sunny</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r3', 'd')"><input type="radio" name="a2r3" value="d"/>Snowy and dark</button>
       </div>
+    </div>
 
-      <!-- B1+ VOCABULARY -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-vocab">📚</div>
-          <div class="skill-name">Vocabulary <span>Choose the option that best completes each sentence.</span></div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 46</div>
-          <p class="q-stem">The CEO's decision to _____ the merger negotiations surprised the board of directors.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pv1" value="a"/><div class="option-box"></div>call off</label>
-            <label class="option-label"><input type="radio" name="b1pv1" value="b"/><div class="option-box"></div>call up</label>
-            <label class="option-label"><input type="radio" name="b1pv1" value="c"/><div class="option-box"></div>call out</label>
-            <label class="option-label"><input type="radio" name="b1pv1" value="d"/><div class="option-box"></div>call in</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 47</div>
-          <p class="q-stem">The documentary shed light on the _____ impact of fast fashion on developing countries.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pv2" value="a"/><div class="option-box"></div>devastating</label>
-            <label class="option-label"><input type="radio" name="b1pv2" value="b"/><div class="option-box"></div>bad</label>
-            <label class="option-label"><input type="radio" name="b1pv2" value="c"/><div class="option-box"></div>ugly</label>
-            <label class="option-label"><input type="radio" name="b1pv2" value="d"/><div class="option-box"></div>harmful</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 48</div>
-          <p class="q-stem">She found the seminar _____ — it gave her a completely new perspective on leadership.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pv3" value="a"/><div class="option-box"></div>eye-catching</label>
-            <label class="option-label"><input type="radio" name="b1pv3" value="b"/><div class="option-box"></div>eye-opening</label>
-            <label class="option-label"><input type="radio" name="b1pv3" value="c"/><div class="option-box"></div>eye-watering</label>
-            <label class="option-label"><input type="radio" name="b1pv3" value="d"/><div class="option-box"></div>eye-level</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 49</div>
-          <p class="q-stem">The new policy aims to _____ inequality by investing in education and healthcare.</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pv4" value="a"/><div class="option-box"></div>tackle</label>
-            <label class="option-label"><input type="radio" name="b1pv4" value="b"/><div class="option-box"></div>escape</label>
-            <label class="option-label"><input type="radio" name="b1pv4" value="c"/><div class="option-box"></div>ignore</label>
-            <label class="option-label"><input type="radio" name="b1pv4" value="d"/><div class="option-box"></div>hide</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 50 — Word Formation</div>
-          <p class="q-stem">The scientist's _____ (discover) of a new element changed the field of chemistry forever.</p>
-          <input type="text" class="blank-input" id="b1pv5" placeholder="Write the correct noun form…"/>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 39 (Reading 4)</div>
+      <div class="question-text">Which slopes did they go to on the first day?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r4', 'a')"><input type="radio" name="a2r4" value="a"/>The advanced slopes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r4', 'b')"><input type="radio" name="a2r4" value="b"/>The beginner slopes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r4', 'c')"><input type="radio" name="a2r4" value="c"/>The cross-country tracks</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r4', 'd')"><input type="radio" name="a2r4" value="d"/>No slopes, they stayed at home</button>
       </div>
+    </div>
 
-      <!-- B1+ READING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-reading">📖</div>
-          <div class="skill-name">Reading <span>Read the extended text and answer the inferential questions.</span></div>
-        </div>
-        <div class="reading-passage">
-          <h4>The Psychology of Procrastination</h4>
-          Most people believe that procrastination is simply laziness — a lack of willpower or motivation. However, psychologists increasingly argue that this is a misconception. At its core, procrastination is an <em>emotional</em> regulation problem, not a time management one.<br/><br/>
-          When faced with a task that feels overwhelming, boring, or anxiety-inducing, the human brain naturally seeks relief from that discomfort. Checking social media, watching another episode, or making yet another cup of coffee all offer an immediate escape from the unpleasant feeling associated with the challenging task. In the short term, this strategy works brilliantly — the discomfort disappears. However, the long-term consequences are often significant: missed deadlines, increased stress, and a growing sense of guilt and self-criticism.<br/><br/>
-          Research by Dr. Timothy Pychyl and Dr. Fuschia Sirois suggests that self-compassion is one of the most effective tools for overcoming procrastination. Rather than punishing yourself harshly for delaying, treating yourself with the same kindness you would offer a struggling friend can break the cycle of negative emotions that fuel further avoidance. The irony, it turns out, is that being kinder to yourself may actually make you more productive.
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 51</div>
-          <p class="q-stem">According to the passage, why do psychologists say procrastination is misunderstood?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pr1" value="a"/><div class="option-box"></div>Because lazy people don't procrastinate.</label>
-            <label class="option-label"><input type="radio" name="b1pr1" value="b"/><div class="option-box"></div>Because it is about managing emotions, not time.</label>
-            <label class="option-label"><input type="radio" name="b1pr1" value="c"/><div class="option-box"></div>Because it only affects people with anxiety disorders.</label>
-            <label class="option-label"><input type="radio" name="b1pr1" value="d"/><div class="option-box"></div>Because watching TV improves productivity.</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 52</div>
-          <p class="q-stem">What does the phrase <strong>"this strategy works brilliantly"</strong> (paragraph 2) refer to?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pr2" value="a"/><div class="option-box"></div>Completing tasks under pressure</label>
-            <label class="option-label"><input type="radio" name="b1pr2" value="b"/><div class="option-box"></div>Avoiding a task to get short-term relief from discomfort</label>
-            <label class="option-label"><input type="radio" name="b1pr2" value="c"/><div class="option-box"></div>Drinking coffee to improve focus</label>
-            <label class="option-label"><input type="radio" name="b1pr2" value="d"/><div class="option-box"></div>Asking a friend for help</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 53</div>
-          <p class="q-stem">The author uses the word <strong>"irony"</strong> in the last paragraph to suggest that:</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pr3" value="a"/><div class="option-box"></div>being productive is impossible for procrastinators.</label>
-            <label class="option-label"><input type="radio" name="b1pr3" value="b"/><div class="option-box"></div>self-criticism is the most effective motivational tool.</label>
-            <label class="option-label"><input type="radio" name="b1pr3" value="c"/><div class="option-box"></div>the opposite of what people expect — gentleness — leads to better results.</label>
-            <label class="option-label"><input type="radio" name="b1pr3" value="d"/><div class="option-box"></div>psychologists are not always reliable.</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 54</div>
-          <p class="q-stem">Which statement best summarises the main message of the text?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pr4" value="a"/><div class="option-box"></div>Procrastination is caused by poor time management skills.</label>
-            <label class="option-label"><input type="radio" name="b1pr4" value="b"/><div class="option-box"></div>Technology is the primary cause of procrastination.</label>
-            <label class="option-label"><input type="radio" name="b1pr4" value="c"/><div class="option-box"></div>Understanding and addressing the emotions behind avoidance helps people overcome procrastination.</label>
-            <label class="option-label"><input type="radio" name="b1pr4" value="d"/><div class="option-box"></div>Only professional psychologists can help people stop procrastinating.</label>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-number">Question 55 — Inference</div>
-          <p class="q-stem">What can we infer about Dr. Pychyl and Dr. Sirois' approach to therapy?</p>
-          <div class="options">
-            <label class="option-label"><input type="radio" name="b1pr5" value="a"/><div class="option-box"></div>They believe rewards and punishments are the best tools.</label>
-            <label class="option-label"><input type="radio" name="b1pr5" value="b"/><div class="option-box"></div>They likely encourage a compassionate, non-judgmental attitude towards oneself.</label>
-            <label class="option-label"><input type="radio" name="b1pr5" value="c"/><div class="option-box"></div>They think procrastinators should work longer hours.</label>
-            <label class="option-label"><input type="radio" name="b1pr5" value="d"/><div class="option-box"></div>They argue procrastination cannot be treated.</label>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 40 (Reading 5)</div>
+      <div class="question-text">What happened on the second day?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r5', 'a')"><input type="radio" name="a2r5" value="a"/>It rained heavily.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r5', 'b')"><input type="radio" name="a2r5" value="b"/>A heavy snowstorm started.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r5', 'c')"><input type="radio" name="a2r5" value="c"/>The cabin caught fire.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r5', 'd')"><input type="radio" name="a2r5" value="d"/>They returned home early.</button>
       </div>
+    </div>
 
-      <!-- B1+ SPEAKING -->
-      <div class="skill-block">
-        <div class="skill-header">
-          <div class="skill-icon icon-speaking">🎙️</div>
-          <div class="skill-name">Speaking <span>Respond fluently and at length. Aim for 1–2 minutes per task.</span></div>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 1 — Extended opinion.</strong><br/>"Artificial intelligence will create more problems than it solves for humanity over the next 20 years." Discuss this statement. Consider both supporting and opposing arguments before giving your own conclusion.</p>
-          <div class="speaking-tip"><strong>Advanced language to aim for:</strong> "It is often argued that… Proponents of this view contend… On the other hand… A further consideration is… To conclude, I would say…"</div>
-          <textarea class="speaking-notes" id="b1psp1" placeholder="Plan your argument — both sides, then your conclusion…"></textarea>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 2 — Problem and solution.</strong><br/>Many young people report high levels of stress and anxiety. What do you think are the main causes? What solutions would you propose, and who should be responsible for implementing them?</p>
-          <div class="speaking-tip"><strong>Structure:</strong> Cause 1 + example → Cause 2 → Solution A (who implements?) → Solution B → Personal reflection</div>
-          <textarea class="speaking-notes" id="b1psp2" placeholder="Map out causes → solutions → responsibilities…"></textarea>
-        </div>
-        <div class="speaking-card">
-          <p class="speaking-prompt"><strong>Task 3 — Hypothetical discussion.</strong><br/>If you could change one major thing about the education system in your country, what would it be and why? What challenges might arise, and how would you overcome them?</p>
-          <div class="speaking-tip"><strong>Language focus:</strong> Conditionals ("If… were to… it would/could…"), concession ("Although… it is worth noting that…"), hedging ("It might be argued that…")</div>
-          <textarea class="speaking-notes" id="b1psp3" placeholder="Your proposed change, reasoning, challenges, solutions…"></textarea>
-        </div>
+    <div class="card">
+      <div class="card-title">Question 41 (Reading 6)</div>
+      <div class="question-text">How low did the temperature drop on the second day?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r6', 'a')"><input type="radio" name="a2r6" value="a"/>Below 0 degrees</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r6', 'b')"><input type="radio" name="a2r6" value="b"/>Below -5 degrees</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r6', 'c')"><input type="radio" name="a2r6" value="c"/>Below -15 degrees</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r6', 'd')"><input type="radio" name="a2r6" value="d"/>Below -25 degrees</button>
       </div>
+    </div>
 
-      <div class="section-nav">
-        <button class="btn-nav btn-prev" onclick="goToSection('b1')">← Back to B1</button>
-        <button class="btn-nav btn-next-b1p" onclick="showResults()">Submit Test ✓</button>
+    <div class="card">
+      <div class="card-title">Question 42 (Reading 7)</div>
+      <div class="question-text">Who lit a fire in the fireplace?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r7', 'a')"><input type="radio" name="a2r7" value="a"/>Mr. Smith</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r7', 'b')"><input type="radio" name="a2r7" value="b"/>Mrs. Smith</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r7', 'c')"><input type="radio" name="a2r7" value="c"/>The children</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r7', 'd')"><input type="radio" name="a2r7" value="d"/>The cabin owner</button>
       </div>
-    </section>
+    </div>
 
-    <!-- RESULTS -->
-    <section id="results" aria-label="Test Completion">
-      <div class="results-hero">
-        <div class="results-icon">🎓</div>
-        <h1 class="results-title">Test Complete!</h1>
-        <p class="results-sub">You have completed all four levels of the CEFR Placement Test.<br/>Your teacher will review your responses and speaking notes to determine your level.</p>
+    <div class="card">
+      <div class="card-title">Question 43 (Reading 8)</div>
+      <div class="question-text">What did Mrs. Smith make for everyone?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r8', 'a')"><input type="radio" name="a2r8" value="a"/>Tea</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r8', 'b')"><input type="radio" name="a2r8" value="b"/>Coffee</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r8', 'c')"><input type="radio" name="a2r8" value="c"/>Hot chocolate</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r8', 'd')"><input type="radio" name="a2r8" value="d"/>Hot soup</button>
       </div>
-      <div class="score-cards">
-        <div class="score-card">
-          <div class="s-level" style="color:var(--accent-a1)">A1 · Beginner</div>
-          <div class="s-pct" style="color:var(--accent-a1)" id="scoreA1">—</div>
-          <div class="s-label">Questions Answered</div>
-        </div>
-        <div class="score-card">
-          <div class="s-level" style="color:var(--accent-a2)">A2 · Elementary</div>
-          <div class="s-pct" style="color:var(--accent-a2)" id="scoreA2">—</div>
-          <div class="s-label">Questions Answered</div>
-        </div>
-        <div class="score-card">
-          <div class="s-level" style="color:var(--accent-b1)">B1 · Intermediate</div>
-          <div class="s-pct" style="color:var(--accent-b1)" id="scoreB1">—</div>
-          <div class="s-label">Questions Answered</div>
-        </div>
-        <div class="score-card">
-          <div class="s-level" style="color:var(--accent-b1p)">B1+ · Upper-Int.</div>
-          <div class="s-pct" style="color:var(--accent-b1p)" id="scoreB1P">—</div>
-          <div class="s-label">Questions Answered</div>
-        </div>
-      </div>
-      <div class="result-band">
-        <h2>📋 Next Steps</h2>
-        <p>Hand this completed test to your teacher. Your responses to all four skill areas — grammar, vocabulary, reading, and speaking — will be evaluated together. Your teacher will discuss your level placement with you and recommend the most appropriate course or learning path.</p>
-      </div>
-      <button class="btn-restart" onclick="restartTest()">↺ Restart Test</button>
-    </section>
+    </div>
 
-  </div><!-- /test-app -->
-</div><!-- /wrapper -->
+    <div class="card">
+      <div class="card-title">Question 44 (Reading 9)</div>
+      <div class="question-text">How did they spend the afternoon during the storm?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r9', 'a')"><input type="radio" name="a2r9" value="a"/>Watching television</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r9', 'b')"><input type="radio" name="a2r9" value="b"/>Playing board games and reading stories</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r9', 'c')"><input type="radio" name="a2r9" value="c"/>Sleeping</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r9', 'd')"><input type="radio" name="a2r9" value="d"/>Trying to repair the cabin roof</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 45 (Reading 10)</div>
+      <div class="question-text">When did the storm end?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'a2r10', 'a')"><input type="radio" name="a2r10" value="a"/>On the second day evening</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r10', 'b')"><input type="radio" name="a2r10" value="b"/>On the third day</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r10', 'c')"><input type="radio" name="a2r10" value="c"/>After a week</button>
+        <button class="option-btn" onclick="selectOpt(this, 'a2r10', 'd')"><input type="radio" name="a2r10" value="d"/>It did not end during their holiday</button>
+      </div>
+    </div>
+
+    <!-- A2 Speaking -->
+    <div class="part-title">🎙️ Part 3: A2 Speaking Prompts (10 Prompts)</div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 11</div>
+      <p class="question-text">Describe a holiday you went on in the past. Where did you go and who did you go with?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 12</div>
+      <p class="question-text">What are your plans for next weekend?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 13</div>
+      <p class="question-text">Compare your city with another city you have visited. Which one do you prefer and why?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 14</div>
+      <p class="question-text">Describe a typical weekend in your life. What activities do you enjoy?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 15</div>
+      <p class="question-text">Why is learning English important for you?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 16</div>
+      <p class="question-text">Describe your favourite book or movie. What is it about?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 17</div>
+      <p class="question-text">What kind of jobs do your family members do?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 18</div>
+      <p class="question-text">What is your favourite season of the year? Explain why.</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 19</div>
+      <p class="question-text">How often do you go shopping? What do you usually buy?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 20</div>
+      <p class="question-text">If you could travel anywhere in the world right now, where would you go?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="nav-footer">
+      <button class="btn btn-prev" onclick="showSection('a1')">← Back to A1</button>
+      <button class="btn btn-next" onclick="showSection('b1')">Go to B1 Section →</button>
+    </div>
+  </section>
+
+  <!-- ==================== LEVEL B1 ==================== -->
+  <section class="test-section" id="section-b1">
+    <div class="banner banner-b1">
+      <h2 class="banner-title">B1 Level (Intermediate)</h2>
+      <p class="banner-desc">Complete all parts below: Grammar, Reading, Vocabulary, and Speaking prompts.</p>
+    </div>
+
+    <!-- B1 Grammar -->
+    <div class="part-title">✏️ Part 1: B1 Grammar (25 Questions)</div>
+
+    <div class="card">
+      <div class="card-title">Question 46</div>
+      <div class="question-text">If it rains tomorrow, we _____ the football match.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g1', 'a')"><input type="radio" name="b1g1" value="a"/>cancel</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g1', 'b')"><input type="radio" name="b1g1" value="b"/>will cancel</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g1', 'c')"><input type="radio" name="b1g1" value="c"/>would cancel</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g1', 'd')"><input type="radio" name="b1g1" value="d"/>cancelled</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 47</div>
+      <div class="question-text">If I won the lottery, I _____ a beautiful house by the beach.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g2', 'a')"><input type="radio" name="b1g2" value="a"/>will buy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g2', 'b')"><input type="radio" name="b1g2" value="b"/>bought</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g2', 'c')"><input type="radio" name="b1g2" value="c"/>would buy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g2', 'd')"><input type="radio" name="b1g2" value="d"/>buy</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 48</div>
+      <div class="question-text">Wine _____ from grapes in many countries around the world.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g3', 'a')"><input type="radio" name="b1g3" value="a"/>makes</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g3', 'b')"><input type="radio" name="b1g3" value="b"/>is made</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g3', 'c')"><input type="radio" name="b1g3" value="c"/>made</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g3', 'd')"><input type="radio" name="b1g3" value="d"/>is making</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 49</div>
+      <div class="question-text">The telephone _____ by Alexander Graham Bell in 1876.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g4', 'a')"><input type="radio" name="b1g4" value="a"/>invented</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g4', 'b')"><input type="radio" name="b1g4" value="b"/>was invented</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g4', 'c')"><input type="radio" name="b1g4" value="c"/>has invented</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g4', 'd')"><input type="radio" name="b1g4" value="d"/>is invented</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 50</div>
+      <div class="question-text">She _____ her keys yesterday afternoon and had to call a locksmith.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g5', 'a')"><input type="radio" name="b1g5" value="a"/>lost</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g5', 'b')"><input type="radio" name="b1g5" value="b"/>has lost</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g5', 'c')"><input type="radio" name="b1g5" value="c"/>was losing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g5', 'd')"><input type="radio" name="b1g5" value="d"/>did lose</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 51</div>
+      <div class="question-text">The train _____ when I finally arrived at the platform.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g6', 'a')"><input type="radio" name="b1g6" value="a"/>already left</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g6', 'b')"><input type="radio" name="b1g6" value="b"/>has already left</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g6', 'c')"><input type="radio" name="b1g6" value="c"/>had already left</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g6', 'd')"><input type="radio" name="b1g6" value="d"/>was already leaving</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 52</div>
+      <div class="question-text">He isn't answering his phone. He _____ be asleep.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g7', 'a')"><input type="radio" name="b1g7" value="a"/>must</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g7', 'b')"><input type="radio" name="b1g7" value="b"/>can</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g7', 'c')"><input type="radio" name="b1g7" value="c"/>shouldn't</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g7', 'd')"><input type="radio" name="b1g7" value="d"/>wouldn't</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 53</div>
+      <div class="question-text">I _____ play football every day, but now I play basketball.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g8', 'a')"><input type="radio" name="b1g8" value="a"/>used to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g8', 'b')"><input type="radio" name="b1g8" value="b"/>use to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g8', 'c')"><input type="radio" name="b1g8" value="c"/>am used to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g8', 'd')"><input type="radio" name="b1g8" value="d"/>was used to</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 54</div>
+      <div class="question-text">That is the beautiful house _____ my uncle bought last year.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g9', 'a')"><input type="radio" name="b1g9" value="a"/>who</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g9', 'b')"><input type="radio" name="b1g9" value="b"/>which</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g9', 'c')"><input type="radio" name="b1g9" value="c"/>whose</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g9', 'd')"><input type="radio" name="b1g9" value="d"/>where</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 55</div>
+      <div class="question-text">The woman _____ lives next door works as a surgeon.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g10', 'a')"><input type="radio" name="b1g10" value="a"/>who</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g10', 'b')"><input type="radio" name="b1g10" value="b"/>which</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g10', 'c')"><input type="radio" name="b1g10" value="c"/>whose</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g10', 'd')"><input type="radio" name="b1g10" value="d"/>whom</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 56</div>
+      <div class="question-text">You don't like spicy food, _____?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g11', 'a')"><input type="radio" name="b1g11" value="a"/>do you</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g11', 'b')"><input type="radio" name="b1g11" value="b"/>don't you</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g11', 'c')"><input type="radio" name="b1g11" value="c"/>are you</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g11', 'd')"><input type="radio" name="b1g11" value="d"/>like you</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 57</div>
+      <div class="question-text">I really enjoy _____ books in my free time.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g12', 'a')"><input type="radio" name="b1g12" value="a"/>to read</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g12', 'b')"><input type="radio" name="b1g12" value="c"/>reading</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g12', 'c')"><input type="radio" name="b1g12" value="c"/>read</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g12', 'd')"><input type="radio" name="b1g12" value="d"/>to reading</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 58</div>
+      <div class="question-text">She decided _____ a new job in a foreign country.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g13', 'a')"><input type="radio" name="b1g13" value="a"/>finding</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g13', 'b')"><input type="radio" name="b1g13" value="b"/>to find</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g13', 'c')"><input type="radio" name="b1g13" value="c"/>find</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g13', 'd')"><input type="radio" name="b1g13" value="d"/>to finding</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 59</div>
+      <div class="question-text">She said that she _____ very busy that week.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g14', 'a')"><input type="radio" name="b1g14" value="a"/>is</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g14', 'b')"><input type="radio" name="b1g14" value="b"/>was</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g14', 'c')"><input type="radio" name="b1g14" value="c"/>will be</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g14', 'd')"><input type="radio" name="b1g14" value="d"/>has been</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 60</div>
+      <div class="question-text">He asked me where I _____ during the summer holiday.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g15', 'a')"><input type="radio" name="b1g15" value="a"/>lived</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g15', 'b')"><input type="radio" name="b1g15" value="b"/>live</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g15', 'c')"><input type="radio" name="b1g15" value="c"/>do live</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g15', 'd')"><input type="radio" name="b1g15" value="d"/>am living</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 61</div>
+      <div class="question-text">"I don't like spicy food." "_____ do I."</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g16', 'a')"><input type="radio" name="b1g16" value="a"/>Neither</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g16', 'b')"><input type="radio" name="b1g16" value="b"/>So</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g16', 'c')"><input type="radio" name="b1g16" value="c"/>Nor</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g16', 'd')"><input type="radio" name="b1g16" value="d"/>Either</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 62</div>
+      <div class="question-text">I'm tired because I _____ in the garden since 8:00 AM.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g17', 'a')"><input type="radio" name="b1g17" value="a"/>worked</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g17', 'b')"><input type="radio" name="b1g17" value="b"/>am working</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g17', 'c')"><input type="radio" name="b1g17" value="c"/>have been working</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g17', 'd')"><input type="radio" name="b1g17" value="d"/>was working</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 63</div>
+      <div class="question-text">This time tomorrow, I _____ on a sunny beach in Italy.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g18', 'a')"><input type="radio" name="b1g18" value="a"/>will be lying</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g18', 'b')"><input type="radio" name="b1g18" value="b"/>will lie</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g18', 'c')"><input type="radio" name="b1g18" value="c"/>am lying</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g18', 'd')"><input type="radio" name="b1g18" value="d"/>lie</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 64</div>
+      <div class="question-text">We _____ buy tickets in advance; there are plenty of seats left.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g19', 'a')"><input type="radio" name="b1g19" value="a"/>don't need to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g19', 'b')"><input type="radio" name="b1g19" value="b"/>mustn't</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g19', 'c')"><input type="radio" name="b1g19" value="c"/>shouldn't</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g19', 'd')"><input type="radio" name="b1g19" value="d"/>can't</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 65</div>
+      <div class="question-text">You _____ see a doctor about that terrible cough.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g20', 'a')"><input type="radio" name="b1g20" value="a"/>would better</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g20', 'b')"><input type="radio" name="b1g20" value="b"/>had better</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g20', 'c')"><input type="radio" name="b1g20" value="c"/>should better</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g20', 'd')"><input type="radio" name="b1g20" value="d"/>have better</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 66</div>
+      <div class="question-text">This hot soup is _____ hot to eat immediately.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g21', 'a')"><input type="radio" name="b1g21" value="a"/>too</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g21', 'b')"><input type="radio" name="b1g21" value="b"/>enough</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g21', 'c')"><input type="radio" name="b1g21" value="c"/>very</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g21', 'd')"><input type="radio" name="b1g21" value="d"/>so</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 67</div>
+      <div class="question-text">Our teacher makes us _____ homework every day.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g22', 'a')"><input type="radio" name="b1g22" value="a"/>do</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g22', 'b')"><input type="radio" name="b1g22" value="b"/>to do</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g22', 'c')"><input type="radio" name="b1g22" value="c"/>doing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g22', 'd')"><input type="radio" name="b1g22" value="d"/>did</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 68</div>
+      <div class="question-text">I stopped _____ some water because I was extremely thirsty.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g23', 'a')"><input type="radio" name="b1g23" value="a"/>drinking</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g23', 'b')"><input type="radio" name="b1g23" value="b"/>to drink</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g23', 'c')"><input type="radio" name="b1g23" value="c"/>drink</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g23', 'd')"><input type="radio" name="b1g23" value="d"/>for drink</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 69</div>
+      <div class="question-text">I wish I _____ speak Spanish fluently.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g24', 'a')"><input type="radio" name="b1g24" value="a"/>can</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g24', 'b')"><input type="radio" name="b1g24" value="b"/>could</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g24', 'c')"><input type="radio" name="b1g24" value="c"/>will</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g24', 'd')"><input type="radio" name="b1g24" value="d"/>would</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 70</div>
+      <div class="question-text">The work must _____ by next Friday.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1g25', 'a')"><input type="radio" name="b1g25" value="a"/>be completed</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g25', 'b')"><input type="radio" name="b1g25" value="b"/>complete</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g25', 'c')"><input type="radio" name="b1g25" value="c"/>completed</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1g25', 'd')"><input type="radio" name="b1g25" value="d"/>being completed</button>
+      </div>
+    </div>
+
+    <!-- B1 Reading -->
+    <div class="part-title">📖 Part 2: B1 Reading Comprehension (10 Questions)</div>
+
+    <div class="passage">
+      <h3>The Impact of E-Commerce</h3>
+      The growth of e-commerce has dramatically altered the retail landscape over the past two decades. With the click of a button, consumers can now order products from anywhere in the world and have them delivered directly to their doorsteps. Proponents of online shopping argue that it offers unmatched convenience, a wider range of products, and often lower prices compared to traditional brick-and-mortar stores.
+      <br/><br/>
+      On the other hand, the rapid decline of physical retail has had significant social and economic consequences for local high streets. Many independent shops have been forced to close down, leading to job losses and a reduction in community interactions. Environmental critics also express concern about the massive increase in packaging waste and carbon emissions from delivery vans. As the retail industry continues to evolve, finding a balance between the convenience of e-commerce and the preservation of local communities remains a major challenge.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 71 (Reading 1)</div>
+      <div class="question-text">According to the passage, what is a main benefit of e-commerce?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r1', 'a')"><input type="radio" name="b1r1" value="a"/>It supports local physical stores.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r1', 'b')"><input type="radio" name="b1r1" value="b"/>It offers unmatched convenience and lower prices.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r1', 'c')"><input type="radio" name="b1r1" value="c"/>It reduces transport emissions.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r1', 'd')"><input type="radio" name="b1r1" value="d"/>It increases local community events.</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 72 (Reading 2)</div>
+      <div class="question-text">What has happened to many independent shops because of online shopping?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r2', 'a')"><input type="radio" name="b1r2" value="a"/>They have expanded globally.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r2', 'b')"><input type="radio" name="b1r2" value="b"/>They have been forced to close down.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r2', 'c')"><input type="radio" name="b1r2" value="c"/>They stopped paying taxes.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r2', 'd')"><input type="radio" name="b1r2" value="d"/>They became purely eco-friendly.</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 73 (Reading 3)</div>
+      <div class="question-text">What is a major social consequence of the decline of high streets?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r3', 'a')"><input type="radio" name="b1r3" value="a"/>More traffic on roads</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r3', 'b')"><input type="radio" name="b1r3" value="b"/>A reduction in community interactions</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r3', 'c')"><input type="radio" name="b1r3" value="c"/>A rise in reading books</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r3', 'd')"><input type="radio" name="b1r3" value="d"/>Less packaging waste</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 74 (Reading 4)</div>
+      <div class="question-text">Why are environmental critics concerned about online shopping?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r4', 'a')"><input type="radio" name="b1r4" value="a"/>Because it does not sell green products.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r4', 'b')"><input type="radio" name="b1r4" value="b"/>Because of massive packaging waste and van emissions.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r4', 'c')"><input type="radio" name="b1r4" value="c"/>Because delivery takes too long.</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r4', 'd')"><input type="radio" name="b1r4" value="d"/>Because it uses too much electricity.</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 75 (Reading 5)</div>
+      <div class="question-text">The word "altered" in the first sentence is closest in meaning to:</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r5', 'a')"><input type="radio" name="b1r5" value="a"/>improved</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r5', 'b')"><input type="radio" name="b1r5" value="b"/>changed</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r5', 'c')"><input type="radio" name="b1r5" value="c"/>destroyed</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r5', 'd')"><input type="radio" name="b1r5" value="d"/>promoted</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 76 (Reading 6)</div>
+      <div class="question-text">Who argues in favor of online shopping?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r6', 'a')"><input type="radio" name="b1r6" value="a"/>Proponents of online shopping</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r6', 'b')"><input type="radio" name="b1r6" value="b"/>Environmental critics</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r6', 'c')"><input type="radio" name="b1r6" value="c"/>Owners of physical stores</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r6', 'd')"><input type="radio" name="b1r6" value="d"/>Local governments</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 77 (Reading 7)</div>
+      <div class="question-text">The term "brick-and-mortar stores" refers to:</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r7', 'a')"><input type="radio" name="b1r7" value="a"/>Factories making bricks</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r7', 'b')"><input type="radio" name="b1r7" value="b"/>Traditional physical shops</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r7', 'c')"><input type="radio" name="b1r7" value="c"/>Online websites</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r7', 'd')"><input type="radio" name="b1r7" value="d"/>Construction offices</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 78 (Reading 8)</div>
+      <div class="question-text">What has e-commerce caused for local job markets?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r8', 'a')"><input type="radio" name="b1r8" value="a"/>Job losses in traditional retail</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r8', 'b')"><input type="radio" name="b1r8" value="b"/>Higher wages for everyone</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r8', 'c')"><input type="radio" name="b1r8" value="c"/>Fewer shipping vacancies</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r8', 'd')"><input type="radio" name="b1r8" value="d"/>An increase in manual labor</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 79 (Reading 9)</div>
+      <div class="question-text">What is the author's tone in this text?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r9', 'a')"><input type="radio" name="b1r9" value="a"/>Extremely angry</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r9', 'b')"><input type="radio" name="b1r9" value="b"/>Highly subjective</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r9', 'c')"><input type="radio" name="b1r9" value="c"/>Balanced and objective</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r9', 'd')"><input type="radio" name="b1r9" value="d"/>Completely indifferent</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 80 (Reading 10)</div>
+      <div class="question-text">What remains a major challenge according to the conclusion?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1r10', 'a')"><input type="radio" name="b1r10" value="a"/>Shutting down all online services</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r10', 'b')"><input type="radio" name="b1r10" value="b"/>Finding a balance between online convenience and preserving local high streets</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r10', 'c')"><input type="radio" name="b1r10" value="c"/>Developing faster delivery methods</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1r10', 'd')"><input type="radio" name="b1r10" value="d"/>Stopping packaging research</button>
+      </div>
+    </div>
+
+    <!-- B1 Vocabulary -->
+    <div class="part-title">📚 Part 3: B1 Vocabulary (40 Questions)</div>
+
+    <div class="card">
+      <div class="card-title">Question 81</div>
+      <div class="question-text">She complained _____ the poor service at the restaurant.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v1', 'a')"><input type="radio" name="b1v1" value="a"/>about</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v1', 'b')"><input type="radio" name="b1v1" value="b"/>for</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v1', 'c')"><input type="radio" name="b1v1" value="c"/>on</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v1', 'd')"><input type="radio" name="b1v1" value="d"/>with</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 82</div>
+      <div class="question-text">Can you recommend a _____ car for long trips?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v2', 'a')"><input type="radio" name="b1v2" value="a"/>reliable</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v2', 'b')"><input type="radio" name="b1v2" value="b"/>useless</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v2', 'c')"><input type="radio" name="b1v2" value="c"/>dependent</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v2', 'd')"><input type="radio" name="b1v2" value="d"/>broken</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 83</div>
+      <div class="question-text">We need to _____ a meeting to discuss the budget.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v3', 'a')"><input type="radio" name="b1v3" value="a"/>arrange</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v3', 'b')"><input type="radio" name="b1v3" value="b"/>disarrange</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v3', 'c')"><input type="radio" name="b1v3" value="c"/>refuse</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v3', 'd')"><input type="radio" name="b1v3" value="d"/>deny</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 84</div>
+      <div class="question-text">He _____ to accept their offer because it was too low.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v4', 'a')"><input type="radio" name="b1v4" value="a"/>suggested</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v4', 'b')"><input type="radio" name="b1v4" value="b"/>refused</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v4', 'c')"><input type="radio" name="b1v4" value="c"/>avoided</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v4', 'd')"><input type="radio" name="b1v4" value="d"/>denied</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 85</div>
+      <div class="question-text">What is the main _____ of buying things online?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v5', 'a')"><input type="radio" name="b1v5" value="a"/>advantage</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v5', 'b')"><input type="radio" name="b1v5" value="b"/>disadvantage</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v5', 'c')"><input type="radio" name="b1v5" value="c"/>drawback</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v5', 'd')"><input type="radio" name="b1v5" value="d"/>penalty</button>
+      </div>
+    </div>
+
+    <!-- Questions 86 to 120 (Remaining Vocabulary) -->
+    <div class="card">
+      <div class="card-title">Question 86</div>
+      <div class="question-text">They managed to _____ their goals after working hard.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v6', 'a')"><input type="radio" name="b1v6" value="a"/>achieve</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v6', 'b')"><input type="radio" name="b1v6" value="b"/>fail</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v6', 'c')"><input type="radio" name="b1v6" value="c"/>miss</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v6', 'd')"><input type="radio" name="b1v6" value="d"/>lose</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 87</div>
+      <div class="question-text">The ancient ruins are a popular tourist _____ in Rome.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v7', 'a')"><input type="radio" name="b1v7" value="a"/>attraction</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v7', 'b')"><input type="radio" name="b1v7" value="b"/>distraction</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v7', 'c')"><input type="radio" name="b1v7" value="c"/>problem</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v7', 'd')"><input type="radio" name="b1v7" value="d"/>destruction</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 88</div>
+      <div class="question-text">We should _____ our energy bills by turning off lights.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v8', 'a')"><input type="radio" name="b1v8" value="a"/>reduce</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v8', 'b')"><input type="radio" name="b1v8" value="b"/>increase</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v8', 'c')"><input type="radio" name="b1v8" value="c"/>produce</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v8', 'd')"><input type="radio" name="b1v8" value="d"/>raise</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 89</div>
+      <div class="question-text">She has a background _____ software development.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v9', 'a')"><input type="radio" name="b1v9" value="a"/>in</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v9', 'b')"><input type="radio" name="b1v9" value="b"/>on</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v9', 'c')"><input type="radio" name="b1v9" value="c"/>for</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v9', 'd')"><input type="radio" name="b1v9" value="d"/>at</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 90</div>
+      <div class="question-text">The project was a huge _____ but we completed it.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v10', 'a')"><input type="radio" name="b1v10" value="a"/>challenge</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v10', 'b')"><input type="radio" name="b1v10" value="b"/>ease</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v10', 'c')"><input type="radio" name="b1v10" value="c"/>comfort</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v10', 'd')"><input type="radio" name="b1v10" value="d"/>safety</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 91</div>
+      <div class="question-text">My parents always _____ me to study hard.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v11', 'a')"><input type="radio" name="b1v11" value="a"/>encourage</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v11', 'b')"><input type="radio" name="b1v11" value="b"/>discourage</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v11', 'c')"><input type="radio" name="b1v11" value="c"/>prevent</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v11', 'd')"><input type="radio" name="b1v11" value="d"/>stop</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 92</div>
+      <div class="question-text">They decided to _____ a flat together to save money.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v12', 'a')"><input type="radio" name="b1v12" value="a"/>rent</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v12', 'b')"><input type="radio" name="b1v12" value="b"/>lend</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v12', 'c')"><input type="radio" name="b1v12" value="c"/>borrow</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v12', 'd')"><input type="radio" name="b1v12" value="d"/>buy</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 93</div>
+      <div class="question-text">Can you cut the cake into eight _____?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v13', 'a')"><input type="radio" name="b1v13" value="a"/>slices</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v13', 'b')"><input type="radio" name="b1v13" value="b"/>pieces of liquid</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v13', 'c')"><input type="radio" name="b1v13" value="c"/>pounds</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v13', 'd')"><input type="radio" name="b1v13" value="d"/>kilos</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 94</div>
+      <div class="question-text">He wants to lose _____ so he goes jogging every morning.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v14', 'a')"><input type="radio" name="b1v14" value="a"/>weight</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v14', 'b')"><input type="radio" name="b1v14" value="b"/>height</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v14', 'c')"><input type="radio" name="b1v14" value="c"/>heavy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v14', 'd')"><input type="radio" name="b1v14" value="d"/>width</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 95</div>
+      <div class="question-text">English is not my _____ language, but I speak it well.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v15', 'a')"><input type="radio" name="b1v15" value="a"/>native</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v15', 'b')"><input type="radio" name="b1v15" value="b"/>natural</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v15', 'c')"><input type="radio" name="b1v15" value="c"/>national</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v15', 'd')"><input type="radio" name="b1v15" value="d"/>local</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 96</div>
+      <div class="question-text">The situation is very _____ and we need to be careful.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v16', 'a')"><input type="radio" name="b1v16" value="a"/>delicate</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v16', 'b')"><input type="radio" name="b1v16" value="b"/>unusual</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v16', 'c')"><input type="radio" name="b1v16" value="c"/>rough</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v16', 'd')"><input type="radio" name="b1v16" value="d"/>safe</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 97</div>
+      <div class="question-text">We must make a _____ about where we will go this evening.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v17', 'a')"><input type="radio" name="b1v17" value="a"/>decision</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v17', 'b')"><input type="radio" name="b1v17" value="b"/>decide</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v17', 'c')"><input type="radio" name="b1v17" value="c"/>option</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v17', 'd')"><input type="radio" name="b1v17" value="d"/>choice</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 98</div>
+      <div class="question-text">The temperature today is well below the seasonal _____.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v18', 'a')"><input type="radio" name="b1v18" value="a"/>average</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v18', 'b')"><input type="radio" name="b1v18" value="b"/>medium</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v18', 'c')"><input type="radio" name="b1v18" value="c"/>middle</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v18', 'd')"><input type="radio" name="b1v18" value="d"/>standard</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 99</div>
+      <div class="question-text">The two countries have a strong trade _____.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v19', 'a')"><input type="radio" name="b1v19" value="a"/>relationship</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v19', 'b')"><input type="radio" name="b1v19" value="b"/>relation</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v19', 'c')"><input type="radio" name="b1v19" value="c"/>connect</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v19', 'd')"><input type="radio" name="b1v19" value="d"/>relative</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 100</div>
+      <div class="question-text">I want to _____ my spoken English skills.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v20', 'a')"><input type="radio" name="b1v20" value="a"/>improve</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v20', 'b')"><input type="radio" name="b1v20" value="b"/>increase</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v20', 'c')"><input type="radio" name="b1v20" value="c"/>grow</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v20', 'd')"><input type="radio" name="b1v20" value="d"/>develops</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 101</div>
+      <div class="question-text">You must study hard to _____ a high score.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v21', 'a')"><input type="radio" name="b1v21" value="a"/>achieve</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v21', 'b')"><input type="radio" name="b1v21" value="b"/>get up</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v21', 'c')"><input type="radio" name="b1v21" value="c"/>put</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v21', 'd')"><input type="radio" name="b1v21" value="d"/>succeed</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 102</div>
+      <div class="question-text">He has been under a lot of _____ at work recently.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v22', 'a')"><input type="radio" name="b1v22" value="a"/>pressure</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v22', 'b')"><input type="radio" name="b1v22" value="b"/>pressing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v22', 'c')"><input type="radio" name="b1v22" value="c"/>force</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v22', 'd')"><input type="radio" name="b1v22" value="d"/>stressful</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 103</div>
+      <div class="question-text">They had to _____ the trip due to bad weather.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v23', 'a')"><input type="radio" name="b1v23" value="a"/>cancel</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v23', 'b')"><input type="radio" name="b1v23" value="b"/>delay</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v23', 'c')"><input type="radio" name="b1v23" value="c"/>postpone</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v23', 'd')"><input type="radio" name="b1v23" value="d"/>call off</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 104</div>
+      <div class="question-text">What is the most _____ way to travel in London?</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v24', 'a')"><input type="radio" name="b1v24" value="a"/>efficient</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v24', 'b')"><input type="radio" name="b1v24" value="b"/>wasteful</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v24', 'c')"><input type="radio" name="b1v24" value="c"/>long</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v24', 'd')"><input type="radio" name="b1v24" value="d"/>slow</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 105</div>
+      <div class="question-text">He has a very _____ personality and makes friends easily.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v25', 'a')"><input type="radio" name="b1v25" value="a"/>cheerful</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v25', 'b')"><input type="radio" name="b1v25" value="b"/>miserable</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v25', 'c')"><input type="radio" name="b1v25" value="c"/>shy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v25', 'd')"><input type="radio" name="b1v25" value="d"/>quiet</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 106</div>
+      <div class="question-text">I am not familiar _____ this computer program.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v26', 'a')"><input type="radio" name="b1v26" value="a"/>with</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v26', 'b')"><input type="radio" name="b1v26" value="b"/>to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v26', 'c')"><input type="radio" name="b1v26" value="c"/>for</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v26', 'd')"><input type="radio" name="b1v26" value="d"/>about</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 107</div>
+      <div class="question-text">She wants to _____ for a new job next week.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v27', 'a')"><input type="radio" name="b1v27" value="a"/>apply</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v27', 'b')"><input type="radio" name="b1v27" value="b"/>demand</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v27', 'c')"><input type="radio" name="b1v27" value="c"/>ask</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v27', 'd')"><input type="radio" name="b1v27" value="d"/>request</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 108</div>
+      <div class="question-text">The price of petrol has _____ again.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v28', 'a')"><input type="radio" name="b1v28" value="a"/>risen</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v28', 'b')"><input type="radio" name="b1v28" value="b"/>raised</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v28', 'c')"><input type="radio" name="b1v28" value="c"/>rose</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v28', 'd')"><input type="radio" name="b1v28" value="d"/>rising</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 109</div>
+      <div class="question-text">The books are arranged in alphabetical _____.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v29', 'a')"><input type="radio" name="b1v29" value="a"/>order</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v29', 'b')"><input type="radio" name="b1v29" value="b"/>sequence</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v29', 'c')"><input type="radio" name="b1v29" value="c"/>line</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v29', 'd')"><input type="radio" name="b1v29" value="d"/>system</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 110</div>
+      <div class="question-text">This museum is free of _____ on Sundays.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v30', 'a')"><input type="radio" name="b1v30" value="a"/>charge</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v30', 'b')"><input type="radio" name="b1v30" value="b"/>cost</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v30', 'c')"><input type="radio" name="b1v30" value="c"/>payment</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v30', 'd')"><input type="radio" name="b1v30" value="d"/>fare</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 111</div>
+      <div class="question-text">He took a deep _____ before diving into the cold water.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v31', 'a')"><input type="radio" name="b1v31" value="a"/>breath</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v31', 'b')"><input type="radio" name="b1v31" value="b"/>breathe</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v31', 'c')"><input type="radio" name="b1v31" value="c"/>breathing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v31', 'd')"><input type="radio" name="b1v31" value="d"/>breathless</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 112</div>
+      <div class="question-text">We must _____ our environment for future generations.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v32', 'a')"><input type="radio" name="b1v32" value="a"/>protect</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v32', 'b')"><input type="radio" name="b1v32" value="b"/>damage</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v32', 'c')"><input type="radio" name="b1v32" value="c"/>destroy</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v32', 'd')"><input type="radio" name="b1v32" value="d"/>pollute</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 113</div>
+      <div class="question-text">The book was so _____ that I couldn't put it down.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v33', 'a')"><input type="radio" name="b1v33" value="a"/>exciting</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v33', 'b')"><input type="radio" name="b1v33" value="b"/>bored</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v33', 'c')"><input type="radio" name="b1v33" value="c"/>boring</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v33', 'd')"><input type="radio" name="b1v33" value="d"/>excited</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 114</div>
+      <div class="question-text">She did not get the job despite her high _____.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v34', 'a')"><input type="radio" name="b1v34" value="a"/>qualifications</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v34', 'b')"><input type="radio" name="b1v34" value="b"/>experience</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v34', 'c')"><input type="radio" name="b1v34" value="c"/>age</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v34', 'd')"><input type="radio" name="b1v34" value="d"/>money</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 115</div>
+      <div class="question-text">The new legislation will come into _____ next month.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v35', 'a')"><input type="radio" name="b1v35" value="a"/>force</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v35', 'b')"><input type="radio" name="b1v35" value="b"/>power</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v35', 'c')"><input type="radio" name="b1v35" value="c"/>law</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v35', 'd')"><input type="radio" name="b1v35" value="d"/>system</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 116</div>
+      <div class="question-text">I look forward _____ from you soon.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v36', 'a')"><input type="radio" name="b1v36" value="a"/>to hearing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v36', 'b')"><input type="radio" name="b1v36" value="b"/>hearing</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v36', 'c')"><input type="radio" name="b1v36" value="c"/>to hear</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v36', 'd')"><input type="radio" name="b1v36" value="d"/>for hearing</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 117</div>
+      <div class="question-text">Could you turn the radio down? It is a bit of a _____.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v37', 'a')"><input type="radio" name="b1v37" value="a"/>distraction</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v37', 'b')"><input type="radio" name="b1v37" value="b"/>attraction</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v37', 'c')"><input type="radio" name="b1v37" value="c"/>comfort</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v37', 'd')"><input type="radio" name="b1v37" value="d"/>help</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 118</div>
+      <div class="question-text">The company has decided to _____ its operations into Asia.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v38', 'a')"><input type="radio" name="b1v38" value="a"/>expand</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v38', 'b')"><input type="radio" name="b1v38" value="b"/>shrink</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v38', 'c')"><input type="radio" name="b1v38" value="c"/>contract</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v38', 'd')"><input type="radio" name="b1v38" value="d"/>decrease</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 119</div>
+      <div class="question-text">We must take action before the situation gets out of _____.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v39', 'a')"><input type="radio" name="b1v39" value="a"/>hand</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v39', 'b')"><input type="radio" name="b1v39" value="b"/>control</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v39', 'c')"><input type="radio" name="b1v39" value="c"/>mind</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v39', 'd')"><input type="radio" name="b1v39" value="d"/>way</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Question 120</div>
+      <div class="question-text">He apologized _____ being late for the class.</div>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOpt(this, 'b1v40', 'a')"><input type="radio" name="b1v40" value="a"/>for</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v40', 'b')"><input type="radio" name="b1v40" value="b"/>about</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v40', 'c')"><input type="radio" name="b1v40" value="c"/>to</button>
+        <button class="option-btn" onclick="selectOpt(this, 'b1v40', 'd')"><input type="radio" name="b1v40" value="d"/>with</button>
+      </div>
+    </div>
+
+    <!-- B1 Speaking -->
+    <div class="part-title">🎙️ Part 4: B1 Speaking Prompts (10 Prompts)</div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 21</div>
+      <p class="question-text">Do you think technology makes our lives simpler or more complicated? Give reasons.</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 22</div>
+      <p class="question-text">Discuss the advantages and disadvantages of working from home.</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 23</div>
+      <p class="question-text">If you could change one thing in your town or city, what would it be?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 24</div>
+      <p class="question-text">Describe a successful person you admire. What makes them successful?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 25</div>
+      <p class="question-text">How has your lifestyle changed compared to five years ago?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 26</div>
+      <p class="question-text">What are the main environmental issues in your country? What should be done to solve them?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 27</div>
+      <p class="question-text">Should university education be free for everyone? Why or why not?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 28</div>
+      <p class="question-text">What is your opinion on public transport in your city? How can it be improved?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 29</div>
+      <p class="question-text">If you won a large amount of money, how would you spend it?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="card speaking-card">
+      <div class="card-title">Speaking Prompt 30</div>
+      <p class="question-text">Describe a memorable trip you took. What made it special?</p>
+      <textarea class="speaking-input" placeholder="Type your notes or response here..."></textarea>
+    </div>
+
+    <div class="nav-footer">
+      <button class="btn btn-prev" onclick="showSection('a2')">← Back to A2</button>
+      <button class="btn btn-next" onclick="submitTest()">Finish & View Progress ✓</button>
+    </div>
+  </section>
+
+  <!-- ==================== RESULTS ==================== -->
+  <section class="test-section" id="section-results">
+    <div class="banner banner-a2">
+      <h2 class="banner-title">Test Submitted!</h2>
+      <p class="banner-desc">Review your completion statistics below. Your teacher will evaluate your speaking responses manually.</p>
+    </div>
+
+    <div class="results-grid">
+      <div class="res-card">
+        <div class="card-title" style="color:var(--accent-a1)">A1 Level Completion</div>
+        <div class="res-val" id="res-a1">0 / 20</div>
+      </div>
+      <div class="res-card">
+        <div class="card-title" style="color:var(--accent-a2)">A2 Level Completion</div>
+        <div class="res-val" id="res-a2">0 / 25</div>
+      </div>
+      <div class="res-card">
+        <div class="card-title" style="color:var(--accent-b1)">B1 Level Completion</div>
+        <div class="res-val" id="res-b1">0 / 75</div>
+      </div>
+    </div>
+
+    <button class="btn btn-next" onclick="restartTest()">↺ Retake Test</button>
+  </section>
+
+</div>
 
 <script>
-  const sections = ['a1','a2','b1','b1p'];
-  let currentSection = 'a1';
+  const sections = ['a1', 'a2', 'b1', 'results'];
+  const answers = {};
 
-  function startTest() {
-    document.getElementById('cover').style.display = 'none';
-    document.getElementById('test-app').style.display = 'block';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-
-  function goToSection(target) {
-    document.getElementById('section-'+currentSection).classList.remove('active');
-    document.getElementById('section-'+target).classList.add('active');
-    currentSection = target;
-    const idx = sections.indexOf(target);
-    document.getElementById('progressText').textContent = 'Level '+(idx+1)+' of 4';
-    document.getElementById('progressBar').style.width = ((idx+1)/4*100)+'%';
-    const colours = {a1:'done-a1',a2:'done-a2',b1:'done-b1',b1p:'done-b1p'};
-    sections.forEach(function(s,i){
-      var dot = document.getElementById('dot-'+s);
-      dot.className = 'step-dot'+(i<=idx?' '+colours[s]:'');
+  function showSection(id) {
+    sections.forEach(s => {
+      document.getElementById('section-' + s).classList.remove('active');
+      var dot = document.getElementById('dot-' + s);
+      if (dot) dot.classList.remove('active-a1', 'active-a2', 'active-b1');
     });
-    window.scrollTo({top:0,behavior:'smooth'});
+
+    document.getElementById('section-' + id).classList.add('active');
+    var targetDot = document.getElementById('dot-' + id);
+    if (targetDot) {
+      if (id === 'a1') targetDot.classList.add('active-a1');
+      if (id === 'a2') targetDot.classList.add('active-a2');
+      if (id === 'b1') targetDot.classList.add('active-b1');
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
-  function countAnswered(names) {
-    var count = 0;
-    names.forEach(function(n){
-      var radios = document.querySelectorAll('input[name="'+n+'"]');
-      var answered = false;
-      radios.forEach(function(r){if(r.checked)answered=true;});
-      if(answered)count++;
+  function selectOpt(btn, name, val) {
+    // Find all sibling buttons and remove selected class
+    var parent = btn.parentElement;
+    parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    answers[name] = val;
+  }
+
+  function countAnswered(keys) {
+    let count = 0;
+    keys.forEach(k => {
+      if (answers[k]) count++;
     });
     return count;
   }
 
-  function showResults() {
-    document.getElementById('section-b1p').classList.remove('active');
-    var a1q  = ['a1g1','a1g2','a1g3','a1g4','a1g5','a1v1','a1v2','a1v3','a1v4','a1r1','a1r2','a1r3'];
-    var a2q  = ['a2g1','a2g2','a2g3','a2g4','a2g5','a2g6','a2v1','a2v2','a2v3','a2v4','a2r1','a2r2','a2r3'];
-    var b1q  = ['b1g1','b1g2','b1g3','b1g4','b1g5','b1g6','b1v1','b1v2','b1v3','b1v4','b1r1','b1r2','b1r3','b1r4'];
-    var b1pq = ['b1pg1','b1pg2','b1pg3','b1pg4','b1pg5','b1pv1','b1pv2','b1pv3','b1pv4','b1pr1','b1pr2','b1pr3','b1pr4','b1pr5'];
-    document.getElementById('scoreA1').textContent  = countAnswered(a1q) +' / '+a1q.length;
-    document.getElementById('scoreA2').textContent  = countAnswered(a2q) +' / '+a2q.length;
-    document.getElementById('scoreB1').textContent  = countAnswered(b1q) +' / '+b1q.length;
-    document.getElementById('scoreB1P').textContent = countAnswered(b1pq)+' / '+b1pq.length;
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('progressBar').style.width = '100%';
-    document.getElementById('progressText').textContent = 'Completed!';
-    var colours = {a1:'done-a1',a2:'done-a2',b1:'done-b1',b1p:'done-b1p'};
-    sections.forEach(function(s){document.getElementById('dot-'+s).className='step-dot '+colours[s];});
-    window.scrollTo({top:0,behavior:'smooth'});
+  function submitTest() {
+    // A1 questions (Grammar 10, Reading 10) -> 20 total
+    const a1q = ['a1g1','a1g2','a1g3','a1g4','a1g5','a1g6','a1g7','a1g8','a1g9','a1g10','a1r1','a1r2','a1r3','a1r4','a1r5','a1r6','a1r7','a1r8','a1r9','a1r10'];
+    // A2 questions (Grammar 15, Reading 10) -> 25 total
+    const a2q = ['a2g1','a2g2','a2g3','a2g4','a2g5','a2g6','a2g7','a2g8','a2g9','a2g10','a2g11','a2g12','a2g13','a2g14','a2g15','a2r1','a2r2','a2r3','a2r4','a2r5','a2r6','a2r7','a2r8','a2r9','a2r10'];
+    // B1 questions (Grammar 25, Reading 10, Vocab 40) -> 75 total
+    const b1q = [];
+    for(let i=1; i<=25; i++) b1q.push('b1g'+i);
+    for(let i=1; i<=10; i++) b1q.push('b1r'+i);
+    for(let i=1; i<=40; i++) b1q.push('b1v'+i);
+
+    document.getElementById('res-a1').textContent = countAnswered(a1q) + ' / 20';
+    document.getElementById('res-a2').textContent = countAnswered(a2q) + ' / 25';
+    document.getElementById('res-b1').textContent = countAnswered(b1q) + ' / 75';
+
+    showSection('results');
   }
 
   function restartTest() {
-    document.querySelectorAll('input[type="radio"]').forEach(function(r){r.checked=false;});
-    document.querySelectorAll('textarea,input[type="text"]').forEach(function(t){t.value='';});
-    document.getElementById('results').style.display = 'none';
-    sections.forEach(function(s){
-      document.getElementById('section-'+s).classList.remove('active');
-      document.getElementById('dot-'+s).className='step-dot';
-    });
-    document.getElementById('section-a1').classList.add('active');
-    currentSection = 'a1';
-    document.getElementById('progressBar').style.width = '25%';
-    document.getElementById('progressText').textContent = 'Level 1 of 4';
-    window.scrollTo({top:0,behavior:'smooth'});
+    // Reset selections
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    // Reset speaking inputs
+    document.querySelectorAll('.speaking-input').forEach(t => t.value = '');
+    // Clear answers object
+    for (let member in answers) delete answers[member];
+
+    showSection('a1');
   }
 </script>
+
 </body>
 </html>
